@@ -1,6 +1,6 @@
 import MainLayout from "@/layouts/MainLayout";
 import styles from "@/styles/Voting.module.scss"
-import SearchNavLayout from '@/layouts/SearchNavLayout'
+import SearchNavLayout from '@/layouts/ContentLayout'
 
 const Index = () => {
     return (
