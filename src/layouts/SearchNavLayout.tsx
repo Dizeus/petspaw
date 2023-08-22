@@ -19,6 +19,7 @@ const SearchNavLayout: React.FC<SearchNavLayoutProps> = ({children}) => {
 				<div className={styles.search__link}><Image alt='favourites' src={fav} layout='fixed'/></div>
 				<div className={styles.search__link}><Image alt='dislikes' src={dislikes} layout='fixed'/></div>
 			</nav>
+			{children}
 		</>
     );
 };

@@ -16,7 +16,6 @@ interface NavItemProps {
 }
 export const NavItem: React.FC<NavItemProps> = ({type, src, active}) =>{
 
-	console.log(active)
 	const router = useRouter()
   return (
       <div className={active?`${styles.navbar__item} ${styles.navbar__item_active}`:`${styles.navbar__item}`} onClick={() => router.push(`/${type}`)}>
