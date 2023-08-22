@@ -1,0 +1,143 @@
+@import "./variables";
+
+
+.wrapper{
+  min-height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
+  &__container{
+    display: flex;
+    column-gap: 20px;
+    min-height: 100vh;
+    padding: 30px;
+	overflow: hidden;
+  }
+}
+.menu{
+  flex: 0 1 665px;
+  &__container{
+    width: 446px;
+    margin: 0 auto;
+  }
+  &__logo{
+    display: flex;
+    align-items: center;
+    column-gap: 7.89px;
+    margin: 0 0 80px 0;
+  }
+  &__greeting{
+    margin: 0 0 60px 0;
+    &Title{
+      font-size: 44px;
+      line-height: 131.818%;
+      font-weight: 500;
+      color: $black;
+      margin-bottom: 10px;
+    }
+    &Subtitle{
+      font-size: 20px;
+      color: $grey;
+    }
+  }
+  &__navbarTitle{
+    color: $black;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  &__item{
+    text-align: center;
+    cursor: pointer;
+    &:first-child{
+      .navbar__imgContainer{
+        background-color: #B4B7FF;
+        .navbar__img{
+          width: 100px;
+          height: 124.5px;
+        }
+      }
+    }
+    &:last-child{
+      .navbar__imgContainer{
+        background-color: #FFD280;
+        .navbar__img{
+          width: 112px;
+          height: 190px;
+        }
+      }
+    }
+
+    &:hover{
+      .navbar__imgContainer{
+          border: 4px solid #FFF;
+      }
+      .navbar__button{
+        background-color: $lightCoral;
+      }
+    }
+    &:active{
+      .navbar__imgContainer{
+        border: 4px solid $lightCoral;
+      }
+      .navbar__button{
+        background-color: $coral;
+        color: white;
+      }
+    }
+  }
+  &__imgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #97EAB9;
+    width: 138px;
+    height: 198px;
+    border-radius: 20px;
+    border: 4px solid rgba(255,255,255, 0.6);
+    margin: 0 0 10px 0;
+
+  }
+  &__img{
+      width: 150px;
+      height: 163px;
+  }
+  &__button{
+    text-transform: uppercase;
+    background-color: $lightBackground;
+    color: $coral;
+    border-radius: 10px;
+    width: 138px;
+    height: 36px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+  }
+
+}
+
+.content{
+  flex: 0 1 680px;
+
+}
+
+.home{
+  background-color: $lightCoral;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  &__img{
+    position: absolute;
+    top: -20px;
+    left: -60px;
+	width: 775px;
+	height: 900px;
+  }
+}
