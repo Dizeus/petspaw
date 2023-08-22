@@ -4,7 +4,7 @@ import SearchNavLayout from '@/layouts/SearchNavLayout'
 
 const Index = () => {
     return (
-        <MainLayout>
+        <MainLayout activeItem='gallery'>
 			<SearchNavLayout>
 			</SearchNavLayout>
 		</MainLayout>

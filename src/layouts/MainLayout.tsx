@@ -6,9 +6,10 @@ import gallery from "../assets/images/images-search.png"
 import Head from 'next/head';
 
 interface MainLayoutProps {
+	activeItem?: string,
 	children: any
 }
-const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
+const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
     return (
 		<>
 			<Head>
@@ -50,9 +51,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
 									Lets start using The Cat API
 								</div>
 								<nav className={styles.navbar}>
-									<NavItem type='voting' src={voting}/>
-									<NavItem type='breeds' src={breeds}/>
-									<NavItem type='gallery' src={gallery}/>
+									<NavItem type='voting' active={activeItem==='voting'} src={voting}/>
+									<NavItem type='breeds' active={activeItem==='breeds'} src={breeds}/>
+									<NavItem type='gallery' active={activeItem==='gallery'} src={gallery}/>
 								</nav>
 							</div>
 						</div>
