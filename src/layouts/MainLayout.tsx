@@ -3,12 +3,12 @@ import {NavItem} from "@/components/NavItem";
 import voting from "../assets/images/vote-table.png"
 import breeds from "../assets/images/pet-breeds.png"
 import gallery from "../assets/images/images-search.png"
-import girlImage from "../assets/images/girl-and-pet.png"
-import Image from "next/image";
 import Head from 'next/head';
 
-
-const MainLayout = () => {
+interface MainLayoutProps {
+	children: any
+}
+const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
     return (
 		<>
 			<Head>
@@ -58,9 +58,7 @@ const MainLayout = () => {
 						</div>
 					</div>
 					<main className={styles.content}>
-						<div className={styles.home}>
-							<Image className={styles.home__img} layout={'fixed'} alt='girl and a pet image' src={girlImage}/>
-						</div>
+						{children}
 					</main>
 				</div>
 			</div>

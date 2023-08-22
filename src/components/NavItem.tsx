@@ -1,6 +1,7 @@
 import styles from "@/styles/MainLayout.module.scss";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 type StaticImageData = {
     src: string
@@ -13,8 +14,10 @@ interface NavItemProps {
     src: StaticImageData,
 }
 export const NavItem: React.FC<NavItemProps> = ({type, src}) =>{
+
+	const router = useRouter()
   return (
-      <div className={styles.navbar__item}>
+      <div className={styles.navbar__item} onClick={() => router.push(`/${type}`)}>
           <div className={styles.navbar__imgContainer}>
               <Image className={styles.navbar__img} src={src} alt={`${type} image`} layout='fixed'/>
           </div>

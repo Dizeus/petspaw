@@ -1,10 +1,12 @@
 import MainLayout from "@/layouts/MainLayout";
-import { Home } from "@/components/Home";
+import styles from "@/styles/Voting.module.scss"
+import SearchNavLayout from '@/layouts/SearchNavLayout'
 
 const Index = () => {
     return (
         <MainLayout>
-			<Home/>
+			<SearchNavLayout>
+			</SearchNavLayout>
 		</MainLayout>
     );
 };
