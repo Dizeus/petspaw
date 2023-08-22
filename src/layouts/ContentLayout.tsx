@@ -3,11 +3,13 @@ import Image from 'next/image';
 import likes from '@/assets/icons/like-30.svg'
 import dislikes from '@/assets/icons/dislike-30.svg'
 import fav from '@/assets/icons/fav-30.svg'
-import search from'@/assets/icons/search-20.svg'
+import search from '@/assets/icons/search-20.svg'
+import arrowBack from '@/assets/icons/back-20.svg'
 interface ContentLayoutProps {
-	children: any
+	children: any,
+	activeItem: string
 }
-const ContentLayout: React.FC<ContentLayoutProps> = ({children}) => {
+const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => {
     return (
 		<>
 			<nav className={styles.search}>
@@ -21,8 +23,8 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children}) => {
 			</nav>
 			<div className={styles.content}>
 				<div className={styles.content__header}>
-					<div className={styles.content__arrow}></div>
-					<div className={styles.content__title}></div>
+					<div className={styles.content__arrow}><Image alt='back' src={arrowBack}/></div>
+					<div className={styles.content__title}>{activeItem}</div>
 				</div>
 				{children}
 			</div>

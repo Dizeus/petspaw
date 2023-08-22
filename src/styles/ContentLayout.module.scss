@@ -5,6 +5,7 @@
 	display: flex;
 	align-items: center;
 	column-gap: 10px;
+	margin-bottom: 10px;
 	&__form{
 		flex: 1 1 auto;
 		border-radius: 20px;
@@ -36,5 +37,34 @@
 		padding: 15px;
 		border-radius: 20px;
 		background-color: $lightBackground;
+	}
+}
+
+.content{
+	background-color: $lightBackground;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	border-radius: 20px;
+	padding: 20px;
+	&__header{
+		display: flex;
+		column-gap: 10px;
+	}
+	&__arrow{
+		background-color: $lightCoral;
+		border-radius: 10px;
+		padding: 10px;
+	}
+	&__title{
+		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 150%;
+		letter-spacing: 2px;
+		background-color: $coral;
+		color: $lightBackground;
+		border-radius: 10px;
+		padding: 5px 30px;
 	}
 }
