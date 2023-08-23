@@ -1,4 +1,4 @@
-export interface Cat {
+export type CatImage = {
 	id: string,
 	url: string,
     breeds: Breed;
@@ -7,7 +7,7 @@ export interface Cat {
 	height: number,
 }
 
-export interface Breed {
+export type Breed = {
 	id: string,
 	temperament: string,
     weight:{imperial: string, metric: string},

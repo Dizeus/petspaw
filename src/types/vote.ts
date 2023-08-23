@@ -1,5 +1,8 @@
+import { CatImage } from "./CatImage"
+import { HistoryItem } from "./HistoryItem";
 export interface VoteState {
-    image: null | {url: string, id: string},
+    image: null | CatImage,
+	history: HistoryItem[]
 	likes: string[]
     favourites: string[],
 	dislikes: string[],
@@ -9,6 +12,8 @@ export enum VoteActionTypes {
 	LIKE = "LIKE",
 	FAV = "FAV",
     DISLIKE = "DISLIKE",
+	SET_HISTORY = "SET_HISTORY",
+	SET_IMAGE = "SET_IMAGE"
 }
 interface LikeAction {
     type: VoteActionTypes.LIKE,
@@ -24,5 +29,18 @@ interface DislikeAction {
     type: VoteActionTypes.DISLIKE,
 	payload: string;
 }
+interface setHistoryAction {
+    type: VoteActionTypes.SET_HISTORY,
+	payload: HistoryItem[];
+}
 
-export type VoteAction = DislikeAction | LikeAction | FavAction
+interface setImageAction {
+    type: VoteActionTypes.SET_IMAGE,
+	payload: CatImage;
+}
+export type VoteAction = 
+	DislikeAction 
+	| LikeAction 
+	| FavAction 
+	| setHistoryAction 
+	| setImageAction
