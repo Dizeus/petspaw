@@ -21,3 +21,7 @@ export const setHistory = (payload: HistoryItem[]): VoteAction => {
 export const setImage = (payload: CatImage): VoteAction => {
     return {type: VoteActionTypes.SET_IMAGE, payload}
 }
+
+export const setInFavourites = (payload: number | null): VoteAction => {
+    return {type: VoteActionTypes.SET_IN_FAVOURITES, payload}
+}
