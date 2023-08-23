@@ -13,7 +13,7 @@ const Index = () => {
         <MainLayout activeItem='voting'>
 			<ContentLayout activeItem="voting">
 				<div className={styles.voting}>
-					<Image className={styles.voting__img} src={catImage} alt='cat' height={400}/>
+					<Image className={styles.voting__imgф} src={catImage} alt='cat' height={400}/>
 					<div className={styles.voting__pannel}>
 						<div className={styles.voting__like}>
 							<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
