@@ -2,7 +2,11 @@
 
 .voting{
 	text-align: center;
-
+	&__header{
+		display: flex;
+		column-gap: 10px;
+		margin-bottom: 20px;
+	}
 	&__img{
 		border-radius: 20px;
 		display: block;

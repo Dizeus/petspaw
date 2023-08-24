@@ -10,6 +10,7 @@ import Image from "next/image";
 import like from '@/assets/icons/like-color-20.svg'
 import dislike from '@/assets/icons/dislike-color-20.svg'
 import favourite from '@/assets/icons/fav-20.svg'
+import { ArrrowTitle } from "@/components/ArrowTittle";
 const Index = () => {
 
 	const {history, image, inFavourites} = useTypedSelector(state => state.vote)
@@ -28,6 +29,9 @@ const Index = () => {
         <MainLayout activeItem='voting'>
 			<ContentLayout activeItem="voting">
 				<div className={styles.voting}>
+					<div className={styles.voting__header}>
+						<ArrrowTitle activeItem="voting"/>
+					</div>
 					<img className={styles.voting__img} src={image?.url}  alt='cat'/>
 					<div className={styles.voting__pannelContainer}> 
 						<div className={styles.voting__pannel}>

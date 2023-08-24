@@ -1,7 +1,51 @@
 @import 'variables';
 
 .breeds{
-	max-width: 650px;
+	&__header{
+		display: flex;
+		column-gap: 10px;
+		margin-bottom: 20px;
+	}
+	&__limit, &__dropdown, &__sort{
+		background-color: $mainBackground;
+		border-radius: 10px;
+		padding: 6px 8px;
+		font-size: 16px;
+		line-height: 150%;
+		color: $grey;
+		height: 40px;
+		cursor: pointer;
+		&:hover {
+			border: 2px solid $lightCoral;
+		}
+	}
+	&__limit,
+	&__dropdown{
+		flex: 1 1 auto;
+		border: none;
+		width: 100%;
+		outline: none;
+		font-family: Jost;
+		text-align: left;
+		option{
+			font-size: 16px;
+			font-family: Jost;
+		}
+	}
+
+	&__sort{
+		flex: 0 0 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&:hover{
+			color: $coral;
+		}
+	}
+
+	&__grid{
+		max-width: 650px;
+	}
 	&__images{
 		display: grid;
 		gap: 20px;
