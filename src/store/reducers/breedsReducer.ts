@@ -47,34 +47,21 @@ export const breedsReducer = (state = initialState, action: BreedsAction): Breed
 
 export const initializeBreeds = () => async (dispatch: Dispatch<BreedsAction>) =>{
     try {
-        const responseBreeds = await api.getBreeds()
 		const responseImages = await api.getBreedsImages(10)
-
 		const images: [CatImage[]] = [[]]
 		for(let i: number = 0; i<10; i+=5){
 			images.push(responseImages.data.slice(i, i+5))
 		}
 		images.shift()
 		dispatch(setImages(images))
-		console.log(responseImages.data)
-        dispatch(setBreeds(responseBreeds.data))
     } catch (e) {
 
     }
 }
 
-export const onSelectBreed = (breed: string) => async (dispatch: Dispatch<BreedsAction>) =>{
+export const getBreed = (breed: string) => async (dispatch: Dispatch<BreedsAction>) =>{
     try {
-        const responseImages = await api.getBreedsImages(10, breed)
         
-		const images: [CatImage[]] = [[]]
-		for(let i: number = 0; i<10; i+=5){
-			images.push(responseImages.data.slice(i, i+5))
-		}
-		images.shift()
-		console.log('-------------------------------------------------------------------------')
-		console.log(images)
-		dispatch(setImages(images))
     } catch (e) {
 
     }
@@ -84,7 +71,6 @@ export const onSelectBreed = (breed: string) => async (dispatch: Dispatch<Breeds
 export const onSelectLimit = (limit: number) => async (dispatch: Dispatch<BreedsAction>) =>{
     try {
         const responseImages = await api.getBreedsImages(limit)
-        
 		const images: [CatImage[]] = [[]]
 		for(let i: number = 0; i<limit; i+=5){
 			images.push(responseImages.data.slice(i, i+5))

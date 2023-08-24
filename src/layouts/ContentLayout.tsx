@@ -5,9 +5,6 @@ import dislikes from '@/assets/icons/dislike-30.svg'
 import fav from '@/assets/icons/fav-30.svg'
 import search from '@/assets/icons/search-20.svg'
 
-import {NextThunkDispatch, wrapper} from "@/store";
-import {initializeVoting} from "@/store/reducers/voteReducer";
-import { BreedsNav } from '@/components/BreedsNav';
 interface ContentLayoutProps {
 	children: any,
 	activeItem: string

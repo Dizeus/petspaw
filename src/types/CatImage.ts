@@ -13,5 +13,6 @@ export type Breed = {
 	temperament: string,
     weight:{imperial: string, metric: string},
 	origin: string,
+	description: string,
 	life_span: string
 }

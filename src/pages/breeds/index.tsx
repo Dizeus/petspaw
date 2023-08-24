@@ -6,19 +6,20 @@ import { useDispatch } from "react-redux";
 import {initializeBreeds} from "@/store/reducers/breedsReducer";
 import styles from "@/styles/Breeds.module.scss";
 import Image from "next/image";
-import { onSelectBreed, onSelectLimit } from "@/store/reducers/breedsReducer";
+import { onSelectLimit } from "@/store/reducers/breedsReducer";
 import sortIcon from "@/assets/icons/sort-20.svg";
 import sortRev from "@/assets/icons/soft-revert-20.svg";
 import { sort } from "@/store/actions-creators/breeds";
 import { ArrrowTitle } from "@/components/ArrowTittle";
+import { useRouter } from "next/router";
 
 const Index = () => {
 	const {breeds, images} = useTypedSelector(state => state.breeds)
 	const dispatch = useDispatch();
-
+	const router = useRouter();
 
 	const onSelectBreedChange = (breed: string) => {
-      dispatch(onSelectBreed(breed));
+      router.push('/breeds/' + breed)
     };
     const onSelectLimitChange = (limit: number) => {
       dispatch(onSelectLimit(limit));

@@ -19,13 +19,10 @@ export const api = {
     async removeFav(idFav: number){
         return await axios.delete(`/favourites/${idFav}`)
     },
-    async getBreeds(){
-        return await axios.get(`/breeds`)
+    async getBreed(breed: string | undefined | string[]){
+        return await axios(`/images/search?breed_ids=${breed}&limit=10`);
     },
-	async getBreedsImages(limit: number, breed?: string){
-        return await axios(`/images/search?${breed?'breed_ids='+ breed:'has_breeds=1'}&limit=${limit}`);
-    },
-	async getSortedBreedsImages(limit: number, order:string){
-        return await axios(`/images/search?has_breeds=1&order=${order}&limit=${limit}`);
+	async getBreedsImages(limit: number){
+        return await axios(`/images/search?has_breeds=1&limit=${limit}`);
     },
 }

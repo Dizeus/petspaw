@@ -1,0 +1,97 @@
+@import 'variables';
+.breed {
+	text-align: center;
+	&__header {
+		display: flex;
+		column-gap: 10px;
+		margin-bottom: 20px;
+	}
+	&__id{
+		background-color: $coral;
+		color: $lightBackground;
+		border-radius: 10px;
+		padding: 5px 30px;
+		font-size: 20px;
+		letter-spacing: 2px;
+		line-height: 150%;
+		font-weight: 500;
+	}
+	&__img{
+		border-radius: 20px;
+		display: block;
+		height: 360px;
+		margin: 0 auto;
+	}
+	&__slider{
+		display: inline-flex;
+		justify-content: center;
+		column-gap: 5px;
+		border-radius: 20px;
+		background-color: $lightBackground;
+		padding: 10px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		transform: translateY(-50%);
+	}
+	&__dot{
+		width: 10px;
+		height: 10px;
+		background-color: $lightCoral;
+		border-radius: 50%;
+		cursor: pointer;
+		&_active{
+			background-color: $coral;
+		}
+	}
+	&__info{
+		border-radius: 20px;
+		border: 2px solid $lightCoral;
+		position: relative;
+		font-size: 16px;
+		padding: 25px 40px;
+	}
+	&__name{
+		display: inline-block;
+		position: absolute;
+		padding: 5px 40px;
+		font-size: 36px;
+		font-weight: 500;
+		background-color: $lightBackground;
+		border-radius: 20px;
+		width: auto;
+		transform: translate(-50%,-50%);
+		top: 0;
+		left: 50%;
+	}
+	&__description{
+		color: $grey;
+		font-size: 20px;
+		font-weight: 500;
+		margin-bottom: 20px;
+	}
+	&__subinfo{
+		text-align: left;
+		display: flex;
+		justify-content: space-between;
+		column-gap: 20px;
+		color: $grey;
+		line-height: 150%;
+	}
+	&__temper{
+		max-width: 200px;
+		strong{
+			display: block;
+			font-weight: 500;
+			color: $black;
+		}
+	}
+	&__details{
+		strong {
+			font-weight: 500;
+			color: $black;
+		}
+	}
+	&__detail:not(:last-child){
+		margin-bottom: 5px;
+	}
+}
