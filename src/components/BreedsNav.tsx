@@ -2,16 +2,22 @@ import styles from "@/styles/BreedsNav.module.scss";
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import sort from '@/assets/icons/sort-20.svg'
+import sortIcon from '@/assets/icons/sort-20.svg'
 import sortRev from "@/assets/icons/soft-revert-20.svg";
-import { onSelectBreed } from "@/store/reducers/breedsReducer";
+import { onSelectBreed, onSelectLimit} from "@/store/reducers/breedsReducer";
+import { useDispatch } from "react-redux";
+import { sort } from "@/store/actions-creators/breeds";
 
 export const BreedsNav = () => {
-
+	const dispatch = useDispatch();
 
 	const onSelectBreedChange = (breed: string) =>{
-
+		dispatch(onSelectBreed(breed))
 	}
+	const onSelectLimitChange = (limit: number) => {
+      dispatch(onSelectLimit(limit));
+    }
+
   return (
     <>
       <select
@@ -19,11 +25,9 @@ export const BreedsNav = () => {
         className={styles.breeds}
         name="breeds"
         id="breeds"
-        defaultValue={''}
+        defaultValue={""}
       >
-        <option value="">
-          All breeds
-        </option>
+        <option value="">All breeds</option>
         <option value="abys">Abyssinian</option>
         <option value="aege">Aegean</option>
         <option value="abob">American Bobtail</option>
@@ -94,19 +98,20 @@ export const BreedsNav = () => {
       </select>
       <select
         defaultValue={10}
+        onChange={(e) => onSelectLimitChange(Number(e.target.value))}
         className={styles.limit}
         name="limit"
         id="limit"
       >
-        <option value="5">Limit: 5</option>
-        <option value="10">Limit: 10</option>
-        <option value="15">Limit: 15</option>
-        <option value="20">Limit: 20</option>
+        <option value={5}>Limit: 5</option>
+        <option value={10}>Limit: 10</option>
+        <option value={15}>Limit: 15</option>
+        <option value={20}>Limit: 20</option>
       </select>
-      <div className={styles.sort}>
-        <Image src={sort} alt="Asc" />
+      <div onClick={() => dispatch(sort("ASC"))} className={styles.sort}>
+        <Image src={sortIcon} alt="Asc" />
       </div>
-      <div className={styles.sort}>
+      <div onClick={() => dispatch(sort("DESC"))} className={styles.sort}>
         <Image src={sortRev} alt="Desc" />
       </div>
     </>

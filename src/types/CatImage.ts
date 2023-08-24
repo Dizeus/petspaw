@@ -9,7 +9,7 @@ export type CatImage = {
 
 export type Breed = {
 	id: string,
-	name?: string,
+	name: string,
 	temperament: string,
     weight:{imperial: string, metric: string},
 	origin: string,

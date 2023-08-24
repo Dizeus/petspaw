@@ -22,7 +22,10 @@ export const api = {
     async getBreeds(){
         return await axios.get(`/breeds`)
     },
-	async getBreedsImages(){
-        return await axios('/images/search?has_breeds=1&limit=15');
-    }
+	async getBreedsImages(limit: number, breed?: string){
+        return await axios(`/images/search?${breed?'breed_ids='+ breed:'has_breeds=1'}&limit=${limit}`);
+    },
+	async getSortedBreedsImages(limit: number, order:string){
+        return await axios(`/images/search?has_breeds=1&order=${order}&limit=${limit}`);
+    },
 }
