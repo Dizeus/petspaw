@@ -2,6 +2,7 @@ import {VoteAction, VoteActionTypes, VoteState} from "../../types/vote";
 import {Dispatch} from "react";
 import axios from "axios";
 import { setHistory, setImage, setInFavourites } from "../actions-creators/vote";
+import {api} from "@/api/api";
 const initialState: VoteState = {
 	image: null,
 	history: [],
@@ -29,9 +30,9 @@ export const voteReducer = (state = initialState, action: VoteAction): VoteState
 
 export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
     try {
-		const responseImage = await axios.get('https://api.thecatapi.com/v1/images/search', {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+		const responseImage = await api.getImage()
 		dispatch(setImage(responseImage.data[0]))
-        const responseHistory  = await axios.get('https://api.thecatapi.com/v1/votes?limit=4&order=DESC&sub_id=userOne1', {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+        const responseHistory  = await api.getHistory()
 		dispatch(setHistory(responseHistory.data))
     } catch (e) {
 
@@ -41,10 +42,11 @@ export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
 
 export const vote = (id: string, value: number) => async (dispatch: Dispatch<VoteAction>) =>{
     try {
-		const response = await axios.post('https://api.thecatapi.com/v1/votes', {"image_id":`${id}`,"sub_id":"userOne1","value": value}, {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+		const response = await api.vote(id, value)
 		if(response.status === 201){
 			if(value<2){
-				const responseImage = await axios.get('https://api.thecatapi.com/v1/images/search', {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+				//if not favourites actions
+				const responseImage = await api.getImage()
 				dispatch(setImage(responseImage.data[0]))
 			}
 			dispatch(setHistory([{id: response.data.id, sub_id: response.data.sub_id, value: response.data.value, image_id: response.data.image_id, created_at: String(Date())}]))
@@ -57,18 +59,18 @@ export const vote = (id: string, value: number) => async (dispatch: Dispatch<Vot
 export const addFav = (id: string, inFav: number | null) => async (dispatch: Dispatch<VoteAction>) =>{
 	try {
 		if(!inFav){
-			const response = await axios.post('https://api.thecatapi.com/v1/favourites', {"image_id":`${id}`,"sub_id":"userOne1"}, {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+			const response = await api.addFav(id)
 			if(response.status === 200){
 				dispatch(setInFavourites(response.data.id))
 			}
 		}else{
-			const response = await axios.delete(`https://api.thecatapi.com/v1/favourites/${inFav}`, {headers:{ 'x-api-key' : 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq' }})
+			const response = await api.removeFav(inFav)
 			if(response.status === 200){
 				dispatch(setInFavourites(null))
 			}
 		}
 		
     } catch (e) {
-		
+		console.log()
     }
 }

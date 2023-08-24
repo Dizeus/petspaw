@@ -25,6 +25,14 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => 
 				<div className={styles.content__header}>
 					<div className={styles.content__arrow}><Image alt='back' src={arrowBack}/></div>
 					<div className={styles.content__title}>{activeItem}</div>
+					<>
+						<select name="breeds" id="breeds">
+							<option value="volvo">Volvo</option>
+							<option value="saab">Saab</option>
+							<option value="mercedes">Mercedes</option>
+							<option value="audi">Audi</option>
+						</select>
+					</>
 				</div>
 				{children}
 			</div>
