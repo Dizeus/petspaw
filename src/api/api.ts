@@ -18,5 +18,8 @@ export const api = {
     },
     async removeFav(idFav: number){
         return await axios.delete(`/favourites/${idFav}`)
+    },
+    async getBreeds(){
+        return await axios.get(`/breeds`)
     }
 }

@@ -1,9 +1,11 @@
 import {combineReducers} from "redux";
 import { voteReducer } from "./voteReducer";
 import {HYDRATE} from "next-redux-wrapper";
+import {breedsReducer} from "@/store/reducers/breedsReducer";
 
 const rootReducer = combineReducers({
     vote: voteReducer,
+    breeds: breedsReducer,
 })
 
 export const reducer = (state: any, action: any) => {

@@ -5,6 +5,8 @@ import dislikes from '@/assets/icons/dislike-30.svg'
 import fav from '@/assets/icons/fav-30.svg'
 import search from '@/assets/icons/search-20.svg'
 import arrowBack from '@/assets/icons/back-20.svg'
+import {NextThunkDispatch, wrapper} from "@/store";
+import {initializeVoting} from "@/store/reducers/voteReducer";
 interface ContentLayoutProps {
 	children: any,
 	activeItem: string
@@ -25,19 +27,11 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => 
 				<div className={styles.content__header}>
 					<div className={styles.content__arrow}><Image alt='back' src={arrowBack}/></div>
 					<div className={styles.content__title}>{activeItem}</div>
-					<>
-						<select name="breeds" id="breeds">
-							<option value="volvo">Volvo</option>
-							<option value="saab">Saab</option>
-							<option value="mercedes">Mercedes</option>
-							<option value="audi">Audi</option>
-						</select>
-					</>
+
 				</div>
 				{children}
 			</div>
 		</>
     );
 };
-
 export default ContentLayout;

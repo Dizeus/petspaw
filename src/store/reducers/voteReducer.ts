@@ -1,14 +1,10 @@
 import {VoteAction, VoteActionTypes, VoteState} from "../../types/vote";
 import {Dispatch} from "react";
-import axios from "axios";
 import { setHistory, setImage, setInFavourites } from "../actions-creators/vote";
 import {api} from "@/api/api";
 const initialState: VoteState = {
 	image: null,
 	history: [],
-	likes: [],
-	favourites: [],
-	dislikes: [],
 	inFavourites: null,
 }
 
@@ -26,8 +22,6 @@ export const voteReducer = (state = initialState, action: VoteAction): VoteState
     }
 }
 
-
-
 export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
     try {
 		const responseImage = await api.getImage()
@@ -37,7 +31,6 @@ export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
     } catch (e) {
 
     }
-
 }
 
 export const vote = (id: string, value: number) => async (dispatch: Dispatch<VoteAction>) =>{
