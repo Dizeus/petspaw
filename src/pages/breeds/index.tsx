@@ -4,22 +4,30 @@ import {NextThunkDispatch, wrapper} from "@/store";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import {initializeBreeds} from "@/store/reducers/breedsReducer";
+import styles from "@/styles/Breeds.module.scss";
+
 const Index = () => {
-	const {breeds} = useTypedSelector(state => state.breeds)
+	const {breeds, images} = useTypedSelector(state => state.breeds)
 	const dispatch = useDispatch();
 
-
 	return (
-		<MainLayout activeItem='voting'>
-			<ContentLayout activeItem="voting">
+		<MainLayout activeItem='breeds'>
+			<ContentLayout activeItem="breeds">
 				<>
-					<select name="breeds" id="breeds">
-						{breeds.map(breed=><option key={breed.id} value={breed.name}>{breed.name}</option>)}
-
-						<option value="saab">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
+					<div className={styles.breeds}>
+							{images.map((page, i)=>{
+								return <div key={i} className={styles.breeds__images}>{
+									page.map(image=>
+									<div key={image.id} className={i%2!==0?styles.breeds__imageContainer_reverse:styles.breeds__imageContainer}>
+										<img className={styles.breeds__image}  src={image.url} alt={`Cat ${image.breeds[0].name}`}/>
+										<div className={styles.breeds__modal}>
+											<button className={styles.breeds__name}>{image.breeds[0].name}</button>
+										</div>
+									</div>)
+							}</div>
+							})}
+						
+					</div>
 				</>
 			</ContentLayout>
 		</MainLayout>

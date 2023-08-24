@@ -1,0 +1,36 @@
+@import 'variables';
+
+
+.limit, .breeds, .sort{
+	background-color: $mainBackground;
+	border-radius: 10px;
+	padding: 6px 8px;
+	font-size: 16px;
+	line-height: 150%;
+	color: $grey;
+	height: 40px;
+	cursor: pointer;
+	&:hover {
+		border: 2px solid $lightCoral;
+	}
+}
+.limit,
+.breeds{
+	flex: 1 1 auto;
+	border: none;
+	width: 100%;
+	outline: none;
+	font-family: Jost;
+	text-align: left;
+	option{
+		font-size: 16px;
+		font-family: Jost;
+	}
+}
+
+.sort{
+	flex: 0 0 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

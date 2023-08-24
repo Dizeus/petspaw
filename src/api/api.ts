@@ -21,5 +21,8 @@ export const api = {
     },
     async getBreeds(){
         return await axios.get(`/breeds`)
+    },
+	async getBreedsImages(){
+        return await axios('/images/search?has_breeds=1&limit=15');
     }
 }
