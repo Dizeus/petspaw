@@ -2,12 +2,18 @@ import React from "react";
 import styles from "@/styles/ImagesGrid.module.scss";
 import { useRouter } from "next/router";
 import { CatImage } from "@/types/CatImage";
-
+import Image from "next/image";
+import fav from '@/assets/icons/fav-20.svg'
+import { useDispatch } from "react-redux";
+import { addFav } from "@/store/reducers/voteReducer";
 interface ImagesGridProps {
-  images: [CatImage[]]
+  images: [CatImage[]],
+  hover: string,
+  favorites?: string[]
 }
-export const ImagesGrid: React.FC<ImagesGridProps> = ({images}) => {
+export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}) => {
   const router = useRouter();
+  const dispatch = useDispatch();
   return (
     <>
       <div className={styles.grid}>
@@ -28,11 +34,20 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images}) => {
                     src={image.url}
                     alt={`Cat ${image.breeds[0]?.name}`}
                   />
-                  <div className={styles.grid__modal}>
-                    <button className={styles.grid__name}>
-                      {image.breeds[0]?.name}
-                    </button>
-                  </div>
+				  {hover==="name"?
+					<div className={styles.grid__modalName}>
+						<button onClick={()=>router.push(`/breeds/${image.breeds[0].id}`)} className={styles.grid__modalButton}>
+						{image.breeds[0]?.name}
+						</button>
+					</div>
+					:<div className={styles.grid__modalFav}>
+						<button onClick={()=>{
+							dispatch(addFav(image.id, null))
+							}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
+							<Image src={fav} alt="fav"/>
+						</button>
+					</div>
+					}
                 </div>
               ))}
             </div>

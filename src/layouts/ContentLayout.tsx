@@ -7,6 +7,7 @@ import search from '@/assets/icons/search-20.svg'
 import arrowBack from "@/assets/icons/back-20.svg";
 import { BreedsNav } from '@/components/BreedsNav';
 import { GalleryNav } from '@/components/GalleryNav';
+import { useRouter } from 'next/router';
 
 interface ContentLayoutProps {
 	children: any,
@@ -14,6 +15,7 @@ interface ContentLayoutProps {
 }
 const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => {
 
+	const router = useRouter()
     return (
       <>
         <nav className={styles.search}>
@@ -39,9 +41,9 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => 
         </nav>
         <div className={styles.content}>
           <div className={styles.content__header}>
-            <div className={styles.arrow}>
+            <button className={styles.arrow} onClick={()=>router.back()}>
               <Image alt="back" src={arrowBack} />
-            </div>
+            </button>
             <div className={styles.title}>{activeItem}</div>
             {activeItem === "breeds" &&  <BreedsNav/>}
 			{activeItem === "gallery" && <GalleryNav/>}

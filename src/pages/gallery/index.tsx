@@ -165,7 +165,7 @@ const Index = () => {
             </div>
           </div>
           <div className={styles.gallery__grid}>
-            <ImagesGrid images={images} />
+            <ImagesGrid hover="fav" images={images} />
           </div>
         </div>
       </ContentLayout>

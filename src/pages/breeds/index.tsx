@@ -13,7 +13,7 @@ const Index = () => {
     <MainLayout activeItem="breeds">
       <ContentLayout activeItem="breeds">
         <div className={styles.breeds}>
-			<ImagesGrid images={images}/>
+			<ImagesGrid hover="name" images={images}/>
         </div>
       </ContentLayout>
     </MainLayout>
