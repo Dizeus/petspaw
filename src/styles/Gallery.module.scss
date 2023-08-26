@@ -1,0 +1,68 @@
+@import 'variables';
+
+.gallery{
+	&__upload{
+		padding: 12px 30px;
+		text-transform: uppercase;
+		border-radius: 10px;
+		color: $coral;
+		background-color: $lightCoral;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 133%;
+		letter-spacing: 2px;
+		margin-left: auto;
+		img{
+			margin-right: 10px;
+		}
+	}
+	&__filters{
+		background-color: $mainBackground;
+		display: flex;
+		gap: 10px 20px;
+		padding: 10px 20px 20px 20px;
+		flex-wrap: wrap;
+		border-radius: 20px;
+	}
+	&__filter{
+		flex: 1 1 250px;
+	}
+	&__filter_load{
+		.gallery__dropdown{
+			width: 80%;
+		}
+	}
+	&__filterTitle{
+		color: $grey;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 10px;
+		line-height: 180%;
+		margin: 0 0 8px 10px;
+	}
+	&__dropdown{
+		font-family: Jost;
+		background-color: $lightBackground;
+		border-radius: 10px;
+		padding: 6px 8px;
+		font-size: 16px;
+		line-height: 150%;
+		color: $black;
+		height: 40px;
+		width: 100%;
+		cursor: pointer;
+		&:hover {
+			border: 2px solid $lightCoral;
+		}
+		option{
+			color: $grey;
+		}
+	}
+	&__load{
+		background-color: $lightBackground;
+		margin-left: 10px;
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+	}
+}

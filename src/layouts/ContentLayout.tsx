@@ -4,12 +4,16 @@ import likes from '@/assets/icons/like-30.svg'
 import dislikes from '@/assets/icons/dislike-30.svg'
 import fav from '@/assets/icons/fav-30.svg'
 import search from '@/assets/icons/search-20.svg'
+import arrowBack from "@/assets/icons/back-20.svg";
+import { BreedsNav } from '@/components/BreedsNav';
+import { GalleryNav } from '@/components/GalleryNav';
 
 interface ContentLayoutProps {
 	children: any,
 	activeItem: string
 }
 const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => {
+
     return (
       <>
         <nav className={styles.search}>
@@ -34,6 +38,14 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => 
           </div>
         </nav>
         <div className={styles.content}>
+          <div className={styles.content__header}>
+            <div className={styles.arrow}>
+              <Image alt="back" src={arrowBack} />
+            </div>
+            <div className={styles.title}>{activeItem}</div>
+            {activeItem === "breeds" &&  <BreedsNav/>}
+			{activeItem === "gallery" && <GalleryNav/>}
+          </div>
           {children}
         </div>
       </>
