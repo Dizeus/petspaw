@@ -1,22 +1,17 @@
 import {BreedsAction, BreedsActionTypes, BreedsState} from "../../types/breeds";
 import {Dispatch} from "react";
 import {api} from "@/api/api";
-import {setBreeds, setImages, sort} from "@/store/actions-creators/breeds";
+import {setImages} from "@/store/actions-creators/breeds";
 import { CatImage } from "@/types/CatImage";
 
 
 const initialState: BreedsState = {
-    breeds: [],
     currBreed: null,
-    limit: 10,
-    sortType: '',
     images: [[]]
 }
 
 export const breedsReducer = (state = initialState, action: BreedsAction): BreedsState => {
     switch (action.type) {
-        case BreedsActionTypes.SET_BREEDS:
-            return {...state, breeds: action.payload}
         case BreedsActionTypes.SORT_ALL:
 			const arr: CatImage[] = [];
 			state.images.map(page=>page.map(image=>arr.push(image)))
@@ -32,8 +27,6 @@ export const breedsReducer = (state = initialState, action: BreedsAction): Breed
 			}
 			sortedImages.shift()
             return {...state, images: sortedImages}
-        case BreedsActionTypes.SET_LIMIT:
-            return {...state, limit: action.payload}
 		case BreedsActionTypes.SET_BREED:
             return {...state, currBreed: action.payload}
 		case BreedsActionTypes.SET_IMAGES:
@@ -58,15 +51,6 @@ export const initializeBreeds = () => async (dispatch: Dispatch<BreedsAction>) =
 
     }
 }
-
-export const getBreed = (breed: string) => async (dispatch: Dispatch<BreedsAction>) =>{
-    try {
-        
-    } catch (e) {
-
-    }
-}
-
 
 export const onSelectLimit = (limit: number) => async (dispatch: Dispatch<BreedsAction>) =>{
     try {

@@ -12,8 +12,10 @@ BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
 };
 
 export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
+
   const [page, setPage] = useState(0);
   const breed = breedInfo[0].breeds[0];
+  
   return (
     <MainLayout activeItem="breeds">
       <ContentLayout activeItem="breeds">

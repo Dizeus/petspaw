@@ -8,8 +8,8 @@ import { CatImage } from "@/types/CatImage";
 const initialState: GalleryState = {
     images: [[]],
 	order: "RAND",
-	type: "jpg,png,gif",
-	breed: 'none',
+	type: "jpg,png",
+	breed: '',
 	limit: 10,
 	page: 1
 }
@@ -26,6 +26,8 @@ export const galleryReducer = (state = initialState, action: GalleryAction): Gal
             return {...state, breed: action.payload}								
         case GalleryActionTypes.SET_LIMIT:
             return {...state, limit: action.payload}
+		case GalleryActionTypes.SET_PAGE:
+            return {...state, page: action.payload}	
         default:
             return state
 
@@ -33,15 +35,15 @@ export const galleryReducer = (state = initialState, action: GalleryAction): Gal
 }
 
 
-export const initializeGallery = () => async (dispatch: Dispatch<GalleryAction>) =>{
+export const getImages = (limit: number, order: string, type: string, page: number, breed?: string) => async (dispatch: Dispatch<GalleryAction>) =>{
     try {
-		//const responseImages = await api.getImages(10)
-		//const images: [CatImage[]] = [[]]
-		//for(let i: number = 0; i<10; i+=5){
-		//	images.push(responseImages.data.slice(i, i+5))
-		//}
-		//images.shift()
-		//dispatch(setImages(images))
+		const responseImages = await api.getImages(limit, order, type, page, breed)
+		const images: [CatImage[]] = [[]]
+		for(let i: number = 0; i<limit; i+=5){
+			images.push(responseImages.data.slice(i, i+5))
+		}
+		images.shift()
+		dispatch(setImages(images))
     } catch (e) {
 
     }

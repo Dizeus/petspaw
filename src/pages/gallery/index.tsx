@@ -1,22 +1,48 @@
 import MainLayout from "@/layouts/MainLayout";
 import styles from "@/styles/Gallery.module.scss";
 import ContentLayout from "@/layouts/ContentLayout";
+import { NextThunkDispatch, wrapper } from "@/store";
 import { useDispatch } from "react-redux";
-import { setLimit, setBreed } from "@/store/actions-creators/gallery";
+import { setLimit, setBreed, setOrder, setType, setPage } from "@/store/actions-creators/gallery";
 import Image from "next/image";
 import load from "@/assets/icons/update-20.svg";
+import { getImages} from "@/store/reducers/galleryReducer";
+import { ImagesGrid } from "@/components/ImagesGrid";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 const Index = () => {
-  const dispatch = useDispatch();
-
+	const {images, order, type, breed, limit, page} = useTypedSelector((state)=>state.gallery)
+  	const dispatch = useDispatch();
+	console.log(page)
+	const onChangeOrder = (newOrder: string) =>{
+ 		dispatch(setOrder(newOrder));
+		dispatch(getImages(limit, newOrder, type, page, breed));		
+	}
+	const onChangeType = (newType: string) =>{
+ 		dispatch(setType(newType));
+		dispatch(getImages(limit, order, newType, page, breed));
+	}
+	const onChangeBreed = (newBreed: string) =>{
+ 		dispatch(setBreed(newBreed));
+		dispatch(getImages(limit, order, type, page, newBreed));		
+	}
+	const onChangeLimit = (newLimit: number) => {
+		dispatch(setLimit(newLimit));
+		dispatch(getImages(newLimit, order, type, page, breed))
+  	}
+	const onClickLoad = () => {
+		dispatch(setPage(page+1));
+		dispatch(getImages(limit, order, type, page + 1, breed));
+  	}
   return (
     <MainLayout activeItem="gallery">
+      {console.log(images)}
       <ContentLayout activeItem="gallery">
         <div className={styles.gallery}>
           <div className={styles.gallery__filters}>
             <div className={styles.gallery__filter}>
               <div className={styles.gallery__filterTitle}>Order</div>
               <select
-                onChange={(e) => dispatch(setBreed(e.target.value))}
+                onChange={(e) => onChangeOrder(e.target.value)}
                 className={styles.gallery__dropdown}
                 name="order"
                 defaultValue={"RAND"}
@@ -29,10 +55,11 @@ const Index = () => {
             <div className={styles.gallery__filter}>
               <div className={styles.gallery__filterTitle}>TYPE</div>
               <select
+                onChange={(e) => onChangeType(e.target.value)}
                 className={styles.gallery__dropdown}
                 name="type"
                 id="type"
-                defaultValue={"jpg,png,gif"}
+                defaultValue={"jpg,png"}
               >
                 <option value={"jpg,png,gif"}>All</option>
                 <option value={"jpg,png"}>Static</option>
@@ -42,7 +69,7 @@ const Index = () => {
             <div className={styles.gallery__filter}>
               <div className={styles.gallery__filterTitle}>Breed</div>
               <select
-                onChange={(e) => dispatch(setBreed(e.target.value))}
+                onChange={(e) => onChangeBreed(e.target.value)}
                 className={styles.gallery__dropdown}
                 name="breeds"
                 defaultValue={""}
@@ -117,11 +144,13 @@ const Index = () => {
                 <option value="ycho">York Chocolate</option>
               </select>
             </div>
-            <div className={`${styles.gallery__filter} ${styles.gallery__filter_load}`}>
+            <div
+              className={`${styles.gallery__filter} ${styles.gallery__filter_load}`}
+            >
               <div className={styles.gallery__filterTitle}>Limit</div>
               <select
                 defaultValue={10}
-                onChange={(e) => dispatch(setLimit(Number(e.target.value)))}
+                onChange={(e) => onChangeLimit(Number(e.target.value))}
                 className={styles.gallery__dropdown}
                 name="limit"
               >
@@ -130,16 +159,26 @@ const Index = () => {
                 <option value={15}>15 items per page</option>
                 <option value={20}>20 items per page</option>
               </select>
-              <button className={styles.gallery__load}>
+              <button onClick={onClickLoad} className={styles.gallery__load}>
                 <Image alt="load new imgs" src={load} />
               </button>
             </div>
           </div>
-          <div className={styles.gallery__grid}></div>
+          <div className={styles.gallery__grid}>
+            <ImagesGrid images={images} />
+          </div>
         </div>
       </ContentLayout>
     </MainLayout>
   );
 };
+
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await getImages(10, "RAND", "jpg,png", 1));
+  }
+);
 
 export default Index;
