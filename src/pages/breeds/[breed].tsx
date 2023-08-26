@@ -69,7 +69,7 @@ export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
               </div>
               <div className={styles.breed__details}>
                 <div className={styles.breed__detail}><strong>Origin: </strong>{breed.origin}</div>
-				<div className={styles.breed__detail}><strong>Weight: </strong>{breed.weight.metric}</div>
+				<div className={styles.breed__detail}><strong>Weight: </strong>{breed.weight.metric} kgs</div>
 				<div className={styles.breed__detail}><strong>Life span: </strong>{breed.life_span} years</div>
               </div>
             </div>
