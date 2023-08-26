@@ -5,6 +5,7 @@ export type CatImage = {
     categories?: [{id:string | number, name: string}];
     width: number,
 	height: number,
+	image?: {url: string}
 }
 
 export type Breed = {

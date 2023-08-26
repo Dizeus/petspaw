@@ -6,14 +6,18 @@ import Image from "next/image";
 import fav from '@/assets/icons/fav-20.svg'
 import { useDispatch } from "react-redux";
 import { addFav } from "@/store/reducers/voteReducer";
+import { HistoryItem } from "@/types/HistoryItem";
+
 interface ImagesGridProps {
-  images: [CatImage[]],
+  images: [CatImage[]] | [HistoryItem[]],
   hover: string,
   favorites?: string[]
 }
 export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}) => {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  
   return (
     <>
       <div className={styles.grid}>
@@ -31,21 +35,29 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}
                 >
                   <img
                     className={styles.grid__image}
-                    src={image.url}
-                    alt={`Cat ${image.breeds[0]?.name}`}
+                    src={image.url || image.image?.url}
+                    alt={`Cat ${image.breeds && image.breeds[0].name}`}
                   />
 				  {hover==="name"?
 					<div className={styles.grid__modalName}>
-						<button onClick={()=>router.push(`/breeds/${image.breeds[0].id}`)} className={styles.grid__modalButton}>
-						{image.breeds[0]?.name}
+						<button onClick={()=>router.push(`/breeds/${image.breeds && image.breeds[0].name}`)} className={styles.grid__modalButton}>
+						{image.breeds && image.breeds[0].name}
 						</button>
 					</div>
-					:<div className={styles.grid__modalFav}>
+					:
+					hover ==='fav'?
+					<div className={styles.grid__modalFav}>
 						<button onClick={()=>{
-							dispatch(addFav(image.id, null))
+							dispatch(addFav(String(image.id), null))
 							}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
 							<Image src={fav} alt="fav"/>
 						</button>
+					</div>
+					:
+					<div className={styles.grid__modalName}>
+						{/*<button onClick={()=>{}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_def}`}>
+							<Image src={fav} alt="fav"/>
+						</button>*/}
 					</div>
 					}
                 </div>

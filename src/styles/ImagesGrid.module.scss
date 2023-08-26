@@ -53,7 +53,7 @@
 		position: relative;
 	}
 
-	&__modalName, &__modalFav {
+	&__modalName, &__modalFav{
 		display: none;
 		background-color: rgba($color: $coral, $alpha: 0.6);
 		position: absolute;

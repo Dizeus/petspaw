@@ -37,6 +37,12 @@
 		padding: 15px;
 		border-radius: 20px;
 		background-color: $lightBackground;
+		&:hover{
+			background-color: $lightCoral;
+		}
+		&_active{
+			background-color: $coral;
+		}
 	}
 }
 

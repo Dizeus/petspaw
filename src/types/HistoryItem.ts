@@ -1,3 +1,5 @@
+import { Breed } from "./CatImage"
+
 export type HistoryItem = {
 	id: number,
 	image_id: string,
@@ -5,7 +7,9 @@ export type HistoryItem = {
 	created_at?: string, 
 	value: number, 
 	country_code?: string,
-	image?: {
+	url?: string,
+	breeds?: Breed[],
+	image: {
     	id: string,
     	url: string
 	}
