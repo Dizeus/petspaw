@@ -1,0 +1,11 @@
+@import "variables";
+
+.search{
+	color: $grey;
+	font-size: 20px;
+	margin-bottom: 20px;
+	span{
+		font-weight: 500;
+		color: $black;
+	}
+}

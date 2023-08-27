@@ -3,7 +3,7 @@ import ContentLayout from "@/layouts/ContentLayout";
 import styles from "@/styles/Breed.module.scss";
 import { api } from "@/api/api";
 import { useState } from "react";
-import {CatImage } from "@/types/CatImage";
+import { CatImage } from "@/types/CatImage";
 import { NextPageContext } from "next";
 
 BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
@@ -12,9 +12,8 @@ BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
 };
 
 export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
-
-  	const [page, setPage] = useState(0);
-	const breed = breedInfo[0].breeds[0];
+  const [page, setPage] = useState(0);
+  const breed = breedInfo[0].breeds[0];
 
   return (
     <MainLayout activeItem="breeds">
@@ -41,7 +40,7 @@ export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
           <div className={styles.breed__info}>
             <div className={styles.breed__name}>{breed.name}</div>
             <div className={styles.breed__description}>
-              {breed.description.split(".")[0]}
+              {breed.bred_for || breed.description.split(".")[0]}
             </div>
 
             <div className={styles.breed__subinfo}>

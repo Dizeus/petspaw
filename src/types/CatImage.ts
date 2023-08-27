@@ -16,5 +16,6 @@ export type Breed = {
     weight:{imperial: string, metric: string},
 	origin: string,
 	description: string,
-	life_span: string
+	life_span: string,
+	bred_for?: string
 }

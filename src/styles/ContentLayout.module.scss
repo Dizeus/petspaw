@@ -14,12 +14,17 @@
 		&:active{
 			border: 2px solid $coral;
 		}
+		&:hover{
+			border: 2px solid $lightCoral;
+		}
 	}
 	&__input{
 		height: 40px;
 		width: 90%;
 		padding-left: 10px;
 		display: inline;
+		font-size: 20px;
+		line-height: 150%;
 		&::placeholder{
 			font-size: 20px;
 			color: $grey;
@@ -28,10 +33,19 @@
 		}
 	}
 	&__button{
-		display: inline;
-		padding: 10px;
+		display: inline-flex;
+		width: 40px;
+		height: 40px;
+		justify-content: center;
+		align-items: center;
 		border-radius: 10px;
 		background-color: $lightCoral;
+		&:hover{
+			background-color: $coral;
+			path{
+				fill: $lightBackground;
+			}
+		}
 	}
 	&__link{
 		padding: 15px;
@@ -63,7 +77,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 40px;
+			min-width: 40px;
 			height: 40px;
 			&:hover{
 				background-color: $coral;
@@ -90,6 +104,10 @@
 		.subtitle{
 			background-color: $lightCoral;
 			color: $coral;
+			&:hover{
+				background-color: $coral;
+				color: $lightBackground;
+			}
 		}
 	}
 	

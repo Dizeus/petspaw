@@ -9,11 +9,13 @@ import load from "@/assets/icons/update-20.svg";
 import { getImages} from "@/store/reducers/galleryReducer";
 import { ImagesGrid } from "@/components/ImagesGrid";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { CatImage } from "@/types/CatImage";
+import { HistoryItem } from "@/types/HistoryItem";
 
 const Index = () => {
 	const {images, order, type, breed, limit, page} = useTypedSelector((state)=>state.gallery)
   	const dispatch = useDispatch();
-	console.log(page)
+	
 	const onChangeOrder = (newOrder: string) =>{
  		dispatch(setOrder(newOrder));
 		dispatch(getImages(limit, newOrder, type, page, breed));		
