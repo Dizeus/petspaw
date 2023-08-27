@@ -2,7 +2,7 @@ import { CatImage } from "./CatImage"
 import { HistoryItem } from "./HistoryItem";
 
 export interface GalleryState {
-    images: [CatImage[]],
+    images: CatImage[],
 	order: string,
 	type: string,
 	breed: string,
@@ -21,7 +21,7 @@ export enum GalleryActionTypes {
 
 interface setImagesAction {
     type: GalleryActionTypes.SET_IMAGES,
-	payload: [CatImage[]];
+	payload: CatImage[];
 }
 
 interface setOrderAction {

@@ -20,7 +20,7 @@ export const api = {
         return await axios.delete(`/favourites/${idFav}`)
     },
     async getBreed(breed: string | undefined | string[]){
-        return await axios.get(`/images/search?breed_ids=${breed}&limit=10`);
+        return await axios.get(`/images/search?breed_ids=${breed}&limit=5`);
     },
 	async getBreedsImages(limit: number){
         return await axios.get(`/images/search?has_breeds=1&limit=${limit}`);
@@ -30,5 +30,8 @@ export const api = {
 	},
 	async uploadFile(formData: FormData){
 		return await axios.post("/images/upload", formData, { headers: { "Content-Type": "multipart/form-data" } })	
-	}
+	},
+	async getFavourites(){
+		return await axios.get("/favourites")	
+	},
 }

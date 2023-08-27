@@ -24,7 +24,7 @@ const Index = ({history}: {history: HistoryItem[]}) => {
       <ContentLayout activeItem="dislikes">
        
           <div className={styles.gallery__grid}>
-            <ImagesGrid hover="def" images={[dislikes]} />
+            <ImagesGrid hover="def" images={dislikes} />
           </div>
       </ContentLayout>
     </MainLayout>

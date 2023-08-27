@@ -21,6 +21,6 @@ export const setPage = (payload: number): GalleryAction => {
     return {type: GalleryActionTypes.SET_PAGE, payload}
 }
 
-export const setImages = (payload: [CatImage[]]): GalleryAction => {
+export const setImages = (payload: CatImage[]): GalleryAction => {
     return {type: GalleryActionTypes.SET_IMAGES, payload}
 }

@@ -2,7 +2,7 @@ import {Breed, CatImage} from "./CatImage"
 import { HistoryItem } from "./HistoryItem";
 export interface BreedsState {
     currBreed: Breed | null,
-    images: [CatImage[]],
+    images: CatImage[],
 }
 
 export enum BreedsActionTypes {
@@ -22,7 +22,7 @@ interface setBreedAction {
 }
 interface setImagesAction {
     type: BreedsActionTypes.SET_IMAGES,
-    payload: [CatImage[]];
+    payload: CatImage[];
 }
 export type BreedsAction = sortAction
 	| setBreedAction 

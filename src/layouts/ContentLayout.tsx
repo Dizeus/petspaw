@@ -14,9 +14,10 @@ import { useRouter } from 'next/router';
 
 interface ContentLayoutProps {
 	children: any,
-	activeItem: string
+	activeItem: string,
+	breedId?: string
 }
-const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => {
+const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, breedId}) => {
 
 	const router = useRouter()
     return (
@@ -47,8 +48,8 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem}) => 
             <button className={styles.arrow} onClick={()=>router.back()}>
               <Image alt="back" src={arrowBack} />
             </button>
-            <div className={styles.title}>{activeItem}</div>
-            {activeItem === "breeds" &&  <BreedsNav/>}
+			<div onClick={()=>router.push(`/${activeItem}`)} className={breedId?styles.subtitle:styles.title}>{activeItem}</div>
+			{activeItem === "breeds" &&  breedId?<div className={styles.title}>{breedId}</div>:<BreedsNav/>}
 			{activeItem === "gallery" && <GalleryNav/>}
           </div>
           {children}

@@ -63,18 +63,23 @@
 			padding: 10px;
 		}
 		
-		.title {
+		.title, .subtitle {
 			text-transform: uppercase;
 			font-size: 20px;
 			font-weight: 500;
 			line-height: 150%;
 			letter-spacing: 2px;
-			background-color: $coral;
-			background-color: $lightCoral;
-			color: $lightBackground;
-			color: $coral;
 			border-radius: 10px;
 			padding: 5px 30px;
+			cursor: pointer;
+		}
+		.title{
+			color: $lightBackground;
+			background-color: $coral;
+		}
+		.subtitle{
+			background-color: $lightCoral;
+			color: $coral;
 		}
 	}
 	

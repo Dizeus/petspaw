@@ -51,23 +51,26 @@
 		padding: 25px 40px;
 	}
 	&__name{
-		display: inline-block;
+		display: flex;
 		position: absolute;
 		padding: 5px 40px;
 		font-size: 36px;
 		font-weight: 500;
 		background-color: $lightBackground;
 		border-radius: 20px;
-		width: auto;
 		transform: translate(-50%,-50%);
 		top: 0;
 		left: 50%;
+		width: fit-content;
+		block-size: fit-content;
+		white-space: nowrap;
 	}
 	&__description{
 		color: $grey;
 		font-size: 20px;
 		font-weight: 500;
 		margin-bottom: 20px;
+		line-height: 133%;
 	}
 	&__subinfo{
 		text-align: left;

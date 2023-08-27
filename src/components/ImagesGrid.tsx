@@ -4,44 +4,36 @@ import { useRouter } from "next/router";
 import { CatImage } from "@/types/CatImage";
 import Image from "next/image";
 import fav from '@/assets/icons/fav-20.svg'
+import favFull from '@/assets/icons/fav-color-20.svg'
 import { useDispatch } from "react-redux";
 import { addFav } from "@/store/reducers/voteReducer";
 import { HistoryItem } from "@/types/HistoryItem";
 
 interface ImagesGridProps {
-  images: [CatImage[]] | [HistoryItem[]],
+  images: CatImage[] | HistoryItem[],
   hover: string,
-  favorites?: string[]
+  favIds?: string[]
 }
-export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}) => {
+export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favIds}) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  
   return (
     <>
       <div className={styles.grid}>
-        {images.map((page, i) => {
-          return (
-            <div key={i} className={styles.grid__images}>
-              {page.map((image) => (
+        {images.map((image) => (
                 <div
                   key={image.id}
-                  className={
-                    i % 2 !== 0
-                      ? styles.grid__imageContainer_reverse
-                      : styles.grid__imageContainer
-                  }
-                >
+                  className={styles.grid__imageContainer}>
                   <img
                     className={styles.grid__image}
                     src={image.url || image.image?.url}
-                    alt={`Cat ${image.breeds && image.breeds[0].name}`}
+                    alt={`Cat ${image.breeds && image.breeds[0]?.name}`}
                   />
 				  {hover==="name"?
 					<div className={styles.grid__modalName}>
-						<button onClick={()=>router.push(`/breeds/${image.breeds && image.breeds[0].name}`)} className={styles.grid__modalButton}>
-						{image.breeds && image.breeds[0].name}
+						<button onClick={()=>router.push(`/breeds/${image.breeds && image.breeds[0]?.id}`)} className={styles.grid__modalButton}>
+						{image.breeds && image.breeds[0]?.name}
 						</button>
 					</div>
 					:
@@ -50,7 +42,7 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}
 						<button onClick={()=>{
 							dispatch(addFav(String(image.id), null))
 							}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
-							<Image src={fav} alt="fav"/>
+							<Image src={favIds?.includes(String(image.image_id))?favFull:fav} alt="fav"/>
 						</button>
 					</div>
 					:
@@ -62,10 +54,7 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favorites}
 					}
                 </div>
               ))}
-            </div>
-          );
-        })}
-      </div>
+    </div>
     </>
   );
 };

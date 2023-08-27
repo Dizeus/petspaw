@@ -6,7 +6,7 @@ import { CatImage } from "@/types/CatImage";
 
 
 const initialState: GalleryState = {
-    images: [[]],
+    images: [],
 	order: "RAND",
 	type: "jpg,png",
 	breed: '',
@@ -38,12 +38,7 @@ export const galleryReducer = (state = initialState, action: GalleryAction): Gal
 export const getImages = (limit: number, order: string, type: string, page: number, breed?: string) => async (dispatch: Dispatch<GalleryAction>) =>{
     try {
 		const responseImages = await api.getImages(limit, order, type, page, breed)
-		const images: [CatImage[]] = [[]]
-		for(let i: number = 0; i<limit; i+=5){
-			images.push(responseImages.data.slice(i, i+5))
-		}
-		images.shift()
-		dispatch(setImages(images))
+		dispatch(setImages(responseImages.data))
     } catch (e) {
 
     }

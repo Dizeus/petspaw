@@ -9,6 +9,6 @@ export const setBreed = (payload: Breed): BreedsAction => {
     return {type: BreedsActionTypes.SET_BREED, payload}
 }
 
-export const setImages = (payload: [CatImage[]]): BreedsAction => {
+export const setImages = (payload: CatImage[]): BreedsAction => {
     return {type: BreedsActionTypes.SET_IMAGES, payload}
 }

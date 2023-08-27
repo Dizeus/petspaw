@@ -6,6 +6,7 @@ export type CatImage = {
     width: number,
 	height: number,
 	image?: {url: string}
+	image_id?: string,
 }
 
 export type Breed = {
