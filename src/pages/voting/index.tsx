@@ -148,7 +148,10 @@ const Index = () => {
                     )}
                   </div>
                 ))
-              : "There is no history"}
+              :
+			   <div className={styles.noitem}>
+					No history found
+				</div>}
           </div>
         </div>
       </ContentLayout>

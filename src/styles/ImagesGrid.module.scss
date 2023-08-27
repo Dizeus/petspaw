@@ -60,13 +60,17 @@
 		justify-content: center;
 	}
 	&__modalButton {
-		background-color: $lightBackground;
+		background-color: $lightBackgroundToBlack;
 		color: $coral;
 		border-radius: 10px;
 		font-size: 16px;
 		padding: 5px 0;
 		width: 100%;
 		line-height: 150%;
+		&:hover{
+			background-color: $coral;
+			color: #FFF;
+		}
 	}
 	&__modalButton_fav{
 		display: flex;
@@ -77,8 +81,19 @@
 		&:hover{
 			background-color: $coral;
 			path{
-				fill: $lightBackground;
+				fill: #FFF;
 			}
 		}
 	}
+	
+}
+
+.noitem {
+	background-color: $mainBackground;
+	font-size: 16px;
+	color: $grey;
+	line-height: 150%;
+	border-radius: 10px;
+	width: 100%;
+	padding: 18px 20px;
 }

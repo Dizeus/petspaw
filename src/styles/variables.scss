@@ -1,6 +1,33 @@
-$mainBackground: #F8F8F7;
-$lightBackground: #FFF;
-$coral: #FF868E;
-$lightCoral: #FBE0DC;
-$black: #1D1D1D;
-$grey: #8C8C8C
+.light{
+	--mainBackground: #F8F8F7;
+	--mainBackgroundTransparent: #F8F8F7;
+	--lightBackground: #FFF;
+	--lightBackgroundToBlack: #FFF;
+	--coral: #FF868E;
+	--lightCoral: #FBE0DC;
+	--lightCoralTransparent: #FBE0DC;
+	--black: #1D1D1D;
+	--grey: #8C8C8C;
+}
+
+.dark {
+	--mainBackground: #1D1D1D;
+	--mainBackgroundTransparent: #282828;
+	--lightBackground: rgba(255,255,255,0.1);
+	--lightBackgroundToBlack: #282828;
+	--coral: #FF868E;
+	--lightCoral: rgba(255,255,255,0.05);
+	--lightCoralTransparent: rgba(255, 134, 142, 0.2);
+	--black: #FFF;
+	--grey: #8C8C8C;
+}
+
+$mainBackground: var(--mainBackground);
+$mainBackgroundTransparent: var(--mainBackgroundTransparent);
+$lightBackground: var(--lightBackground);
+$lightBackgroundToBlack: var(--lightBackgroundToBlack);
+$coral: var(--coral);
+$lightCoral: var(--lightCoral);
+$lightCoralTransparent: var(--lightCoralTransparent);
+$black: var(--black);
+$grey: var(--grey);

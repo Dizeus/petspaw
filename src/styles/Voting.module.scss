@@ -24,7 +24,7 @@
 		column-gap: 4px;
 		justify-content: center;
 		cursor: pointer;
-		background-color: $lightBackground;
+		background-color: #ffffffc2;
 		border-radius: 20px;
 		border: 4px solid $lightBackground;
 		div{
@@ -101,4 +101,13 @@
 			font-weight: 500;
 		}
 	}
+}
+.noitem {
+	background-color: $mainBackground;
+	font-size: 16px;
+	color: $grey;
+	line-height: 150%;
+	border-radius: 10px;
+	width: 100%;
+	padding: 18px 20px;
 }

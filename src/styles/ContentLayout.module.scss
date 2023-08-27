@@ -25,6 +25,7 @@
 		display: inline;
 		font-size: 20px;
 		line-height: 150%;
+		background-color: transparent;
 		&::placeholder{
 			font-size: 20px;
 			color: $grey;
@@ -39,11 +40,11 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 10px;
-		background-color: $lightCoral;
+		background-color: $lightCoralTransparent;
 		&:hover{
 			background-color: $coral;
 			path{
-				fill: $lightBackground;
+				fill: #FFF;
 			}
 		}
 	}
@@ -61,7 +62,7 @@
 }
 
 .content{
-	background-color: $lightBackground;
+	background-color: $lightBackgroundToBlack;
 	width: 680px;
 	overflow: auto;
 	border-radius: 20px;
@@ -71,7 +72,7 @@
 		column-gap: 10px;
 		margin-bottom: 20px;
 		.arrow {
-			background-color: $lightCoral;
+			background-color: $lightCoralTransparent;
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
@@ -81,7 +82,7 @@
 			&:hover{
 				background-color: $coral;
 				path{
-					fill: $lightBackground;
+					fill: #FFF;
 				}
 			}
 		}
@@ -97,7 +98,7 @@
 			cursor: pointer;
 		}
 		.title{
-			color: $lightBackground;
+			color: #FFF;
 			background-color: $coral;
 		}
 		.subtitle{

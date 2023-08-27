@@ -13,7 +13,7 @@
 	position: relative;
 	height: 100%;
 	border-radius: 20px;
-	background-color: $mainBackground;
+	background-color: $mainBackgroundTransparent;
 	padding: 100px 20px;
 	font-size: 20px;
 	text-align: center;
@@ -29,7 +29,7 @@
 		border-radius: 10px;
 		&:hover{
 			background-color: $coral;
-			color: $lightBackground;
+			color: #FFF;
 		}
 	}
 	&__title{
@@ -89,7 +89,7 @@
 		background-color: $coral;
 		text-transform: uppercase;
 		border-radius: 10px;
-		color: $lightBackground;
+		color: #fff;
 		padding: 12px 30px;
 		font-size: 12px;
 		font-weight: 500;

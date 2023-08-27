@@ -5,6 +5,7 @@ import breeds from "../assets/images/pet-breeds.png"
 import gallery from "../assets/images/images-search.png"
 import Head from 'next/head';
 
+import DarkMode from '@/components/ThemeSwitch';
 interface MainLayoutProps {
 	activeItem?: string,
 	children: any
@@ -12,6 +13,8 @@ interface MainLayoutProps {
 
 
 const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
+
+	
     return (
       <>
         <Head>
@@ -80,6 +83,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                     />
                   </svg>
                   <svg
+                    className={styles.menu__petspaw}
                     xmlns="http://www.w3.org/2000/svg"
                     width="73"
                     height="13"
@@ -115,8 +119,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                       fill="#1D1D1D"
                     />
                   </svg>
+				  <DarkMode/>
                 </div>
-                <div className={styles.menu__greeting}>
+               <div className={styles.menu__greeting}>
                   <div className={styles.menu__greetingTitle}>Hi!👋</div>
                   <div className={styles.menu__greetingSubtitle}>
                     Welcome to MacPaw Bootcamp 2023
