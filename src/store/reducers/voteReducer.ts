@@ -26,7 +26,7 @@ export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
     try {
 		const responseImage = await api.getImage()
 		dispatch(setImage(responseImage.data[0]))
-        const responseHistory  = await api.getHistory()
+        const responseHistory  = await api.getHistory(4)
 		dispatch(setHistory(responseHistory.data))
     } catch (e) {
 

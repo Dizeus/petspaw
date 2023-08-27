@@ -1,0 +1,40 @@
+@import 'variables';
+
+.history {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	margin-top: 40px;
+	&__element {
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+		width: 100%;
+		background-color: $mainBackground;
+		padding: 15px;
+		border-radius: 10px;
+	}
+
+	&__date {
+		flex: 0 1 auto;
+		background-color: $lightBackground;
+		padding: 3px 10px;
+		color: $black;
+		font-size: 16px;
+		border-radius: 5px;
+		line-height: 150%;
+	}
+
+	&__message {
+		flex: 1 1 auto;
+		text-align: left;
+		color: $grey;
+		font-size: 16px;
+		line-height: 150%;
+
+		span {
+			color: $black;
+			font-weight: 500;
+		}
+	}
+}

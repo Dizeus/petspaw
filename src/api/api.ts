@@ -7,8 +7,8 @@ export const api = {
     async getImage(){
         return await axios.get('/images/search')
     },
-    async getHistory(){
-        return await axios.get(`/votes?limit=10&order=DESC&sub_id=${subId}`)
+    async getHistory(limit: number){
+        return await axios.get(`/votes?limit=${limit}&order=DESC&sub_id=${subId}`)
     },
     async vote(id: string, value: number){
         return await axios.post('/votes', {"image_id":`${id}`,"sub_id":subId,"value": value})

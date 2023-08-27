@@ -20,7 +20,7 @@ const Index = ({ history }: { history: HistoryItem[] }) => {
 };
 
 Index.getInitialProps = async (ctx: NextPageContext) => {
-  const res = await api.getHistory();
+  const res = await api.getHistory(100);
   return { history: res.data };
 };
 

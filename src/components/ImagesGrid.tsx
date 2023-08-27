@@ -10,11 +10,11 @@ import { addFav } from "@/store/reducers/voteReducer";
 import { HistoryItem } from "@/types/HistoryItem";
 
 interface ImagesGridProps {
-  images: CatImage[] | HistoryItem[],
-  hover: string,
-  favIds?: string[]
+  images: CatImage[] | HistoryItem[];
+  hover: string;
+  onFavClick?: (imageId: string, favId: number) => void;
 }
-export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favIds}) => {
+export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, onFavClick}) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -39,10 +39,8 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, favIds}) =
 					:
 					hover ==='fav'?
 					<div className={styles.grid__modalFav}>
-						<button onClick={()=>{
-							dispatch(addFav(String(image.id), null))
-							}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
-							<Image src={favIds?.includes(String(image.image_id))?favFull:fav} alt="fav"/>
+						<button onClick={()=>{onFavClick && onFavClick(String(image.image_id), Number(image.id))}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
+							<Image src={favFull} alt="fav"/>
 						</button>
 					</div>
 					:

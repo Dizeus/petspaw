@@ -60,7 +60,17 @@
 		.arrow {
 			background-color: $lightCoral;
 			border-radius: 10px;
-			padding: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			&:hover{
+				background-color: $coral;
+				path{
+					fill: $lightBackground;
+				}
+			}
 		}
 		
 		.title, .subtitle {

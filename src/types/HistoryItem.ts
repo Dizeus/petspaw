@@ -9,7 +9,7 @@ export type HistoryItem = {
 	country_code?: string,
 	url?: string,
 	breeds?: Breed[],
-	image: {
+	image?: {
     	id: string,
     	url: string
 	}

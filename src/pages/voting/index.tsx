@@ -126,21 +126,11 @@ const Index = () => {
                     <div className={styles.history__message}>
                       Image ID: <span>{x.image_id}</span> was{" "}
                       {x.value === 3 ? "removed from" : "added to"}{" "}
-                      {x.value === -1
-                        ? "Dislikes"
-                        : x.value === 1
-                        ? "Likes"
-                        : "Favourites"}
+                      {x.value === -1? "Dislikes": x.value === 1? "Likes": "Favourites"}
                     </div>
                     {x.value !== 3 && (
                       <Image
-                        src={
-                          x.value === -1
-                            ? dislike
-                            : x.value === 1
-                            ? like
-                            : favourite
-                        }
+                        src={x.value === -1? dislike: x.value === 1? like: favourite}
                         alt="icon"
                       />
                     )}
