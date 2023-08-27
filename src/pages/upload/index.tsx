@@ -57,8 +57,10 @@ const Index = () => {
       event.preventDefault();
       event.stopPropagation();
       const file = event.dataTransfer.files[0];
+	  console.log(file)
 		if(file !== undefined){
 			setPreviewUrl(URL.createObjectURL(file));
+			setMyFile(file)
 			URL.revokeObjectURL(file)
 		}
 	  

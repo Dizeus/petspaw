@@ -10,12 +10,13 @@
     column-gap: 20px;
     min-height: 100vh;
     padding: 30px;
-	overflow: hidden;
   }
 }
 .menu{
   flex: 0 1 665px;
+  
   &__container{
+	position: fixed;
     width: 446px;
     margin: 0 auto;
   }
@@ -123,6 +124,5 @@
 
 .content{
   flex: 0 1 680px;
-
 }
 

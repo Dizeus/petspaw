@@ -2,8 +2,10 @@
 
 .gallery{
 	&__upload{
-		padding: 12px 30px;
+		display: flex;
 		text-transform: uppercase;
+		align-items: center;
+		justify-content: center;
 		border-radius: 10px;
 		color: $coral;
 		background-color: $lightCoral;
@@ -11,9 +13,16 @@
 		font-weight: 500;
 		line-height: 133%;
 		letter-spacing: 2px;
+		width: 143px;
+		height: 40px;
+		column-gap: 10px;
 		margin-left: auto;
-		img{
-			margin-right: 10px;
+		&:hover{
+			color: $lightBackground;
+			background-color: $coral;
+			path{
+				fill: $lightBackground;
+			}
 		}
 	}
 	&__filters{
@@ -23,14 +32,20 @@
 		padding: 10px 20px 20px 20px;
 		flex-wrap: wrap;
 		border-radius: 20px;
+		
 		margin-bottom: 20px;
 	}
 	&__filter{
 		flex: 1 1 250px;
 	}
 	&__filter_load{
+		display: flex;
+		align-items: flex-end;
+		&>div{
+			width: 250px;
+		}
 		.gallery__dropdown{
-			width: 80%;
+			flex: 1 0 250px;
 		}
 	}
 	&__filterTitle{
@@ -60,11 +75,17 @@
 		}
 	}
 	&__load{
+		flex: 0 1 40px;
 		background-color: $lightBackground;
 		margin-left: 10px;
-		width: 40px;
 		height: 40px;
 		border-radius: 10px;
+		&:hover{
+			background-color: $coral;
+			path{
+				fill: $lightBackground;
+			}
+		}
 	}
 }
 

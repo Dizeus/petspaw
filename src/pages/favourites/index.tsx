@@ -16,17 +16,15 @@ const Index = ({ fav }: { fav: HistoryItem[] }) => {
 	const dispatch = useDispatch()
 
   const onFavClick = (imageId: string, favId: number) =>{
-	if(favId){
-    	setImages(images.filter((item) => favId != item.id));
-		setHistory([...history, {image_id: imageId, created_at: String(Date())}])
-	}
+    setImages(images.filter((item) => favId != item.id));
+	setHistory([...history, {image_id: imageId, created_at: String(Date())}])
 	dispatch(addFav(imageId, favId))
 
   }
   return (
     <MainLayout activeItem="none">
       <ContentLayout activeItem="favourites">
-          <ImagesGrid hover="fav" images={images} onFavClick={onFavClick}/>
+          <ImagesGrid hover="fav" images={images} onFavClick={onFavClick} favIds={images.map(image=>(image.image_id))}/>
 		<div className={styles.history}>
             {history?.map((x) => (
                   <div key={x.image_id} className={styles.history__element}>

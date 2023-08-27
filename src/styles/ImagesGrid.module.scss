@@ -74,5 +74,11 @@
 		height: 40px;
 		align-items: center;
 		justify-content: center;
+		&:hover{
+			background-color: $coral;
+			path{
+				fill: $lightBackground;
+			}
+		}
 	}
 }

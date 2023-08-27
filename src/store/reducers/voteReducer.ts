@@ -51,6 +51,7 @@ export const vote = (id: string, value: number) => async (dispatch: Dispatch<Vot
 }
 export const addFav = (id: string, inFav: number | null) => async (dispatch: Dispatch<VoteAction>) =>{
 	try {
+		console.log(id, inFav)
 		if(!inFav){
 			const response = await api.addFav(id)
 			if(response.status === 200){

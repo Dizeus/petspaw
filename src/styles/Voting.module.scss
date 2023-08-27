@@ -2,14 +2,22 @@
 
 .voting{
 	text-align: center;
+	&__relative{
+		position: relative;
+		margin-bottom: 52px;
+	}
 	&__img{
 		border-radius: 20px;
 		display: block;
 		height: 360px;
 		margin: 0 auto;
+
 	}
 	&__pannelContainer{
-		transform: translateY(-50%);
+		transform: translate(-50%, 50%);
+		position: absolute;
+		left: 50%;
+		bottom: 0;
 	}
 	&__pannel{
 		display: inline-flex;
