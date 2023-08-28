@@ -1,4 +1,7 @@
 @import 'variables';
+.content {
+	flex: 0 1 680px;
+}
 .search{
 	width: 100%;
 	height: 60px;
@@ -6,8 +9,63 @@
 	align-items: center;
 	column-gap: 10px;
 	margin-bottom: 10px;
+	&__burgerContainer{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $lightBackground;
+		width: 60px;
+		height: 60px;
+		border-radius: 20px;
+		@media (min-width:767.98px) {
+			display: none;
+		}
+	}
+	&__burger {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 30px;
+		height: 20px;
+		border-radius: 10px;
+		cursor: pointer;
+		position: relative;
+		z-index: 4;
+			div {
+				width: 100%;
+				height: 2px;
+				background-color: $coral;
+				transition: all 0.3s ease 0s;
+				border-radius: 15px;
+				margin-bottom: 1px;
+			}
+	
+			&_active {
+				position: absolute;
+				top: 30px;
+				right: 30px;
+				.second {
+					transform: scale(0);
+				}
+	
+				.first {
+					top: 50%;
+					position: absolute;
+					transform: rotate(45deg);
+				}
+	
+				.third {
+					top: 50%;
+					position: absolute;
+					transform: rotate(-45deg);
+				}
+			}
+	
+			
+		}
 	&__form{
 		flex: 1 1 auto;
+		display: flex;
 		border-radius: 20px;
 		background-color: $lightBackground;
 		padding: 10px;
@@ -20,9 +78,8 @@
 	}
 	&__input{
 		height: 40px;
-		width: 90%;
+		flex: 1 1 auto;
 		padding-left: 10px;
-		display: inline;
 		font-size: 20px;
 		line-height: 150%;
 		background-color: transparent;
@@ -61,9 +118,9 @@
 	}
 }
 
-.content{
+.section{
 	background-color: $lightBackgroundToBlack;
-	width: 680px;
+	max-width: 680px;
 	overflow: auto;
 	border-radius: 20px;
 	padding: 20px;

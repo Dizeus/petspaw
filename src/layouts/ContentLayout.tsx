@@ -13,45 +13,74 @@ import { useRouter } from 'next/router';
 import { useState } from "react";
 
 interface ContentLayoutProps {
-	children: any,
-	activeItem: string,
-	breedId?: string,
-	searchque?: string
+  children: any;
+  activeItem: string;
+  breedId?: string;
+  searchque?: string;
+  setburgerActive?: (burgerActive: boolean) => void;
+  burgerActive?: boolean
 }
-const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, breedId, searchque=''}) => {
+const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, breedId, searchque='', setburgerActive, burgerActive}) => {
 
 	const router = useRouter()
 	const [que, setQue] = useState(searchque);
+	console.log(setburgerActive);
 	const onClickSearch = (e: any) =>{
 		e.preventDefault()
 		router.push(`/search/${que}`)
 	}
     return (
-      <>
+      <main className={styles.content}>
         <nav className={styles.search}>
+          <div
+            className={styles.search__burgerContainer}
+            onClick={() => setburgerActive && setburgerActive(!burgerActive)}
+          >
+            <div
+              className={
+                burgerActive
+                  ? `${styles.search__burger} ${styles.search__burger_active}`
+                  : styles.search__burger
+              }
+            >
+              <div className={styles.first}></div>
+              <div className={styles.second}></div>
+              <div className={styles.third}></div>
+            </div>
+          </div>
           <form className={styles.search__form}>
             <input
               className={styles.search__input}
               type="text"
-			  value={que}
+              value={que}
               placeholder="Search for breads by name"
-			  onChange={(e)=>setQue(e.target.value)}
+              onChange={(e) => setQue(e.target.value)}
             />
             <button
-              onClick={(e)=>onClickSearch(e)}
+              onClick={(e) => onClickSearch(e)}
               className={styles.search__button}
               type="submit"
             >
-              	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<g id="search-20" clip-path="url(#clip0_1_1573)">
-					<path id="Vector" d="M19.3613 18.2168L14.6012 13.2662C15.8251 11.8113 16.4957 9.98069 16.4957 8.07499C16.4957 3.62251 12.8732 0 8.4207 0C3.96821 0 0.345703 3.62251 0.345703 8.07499C0.345703 12.5275 3.96821 16.15 8.4207 16.15C10.0922 16.15 11.6851 15.6458 13.047 14.6888L17.8432 19.677C18.0436 19.8852 18.3133 20 18.6022 20C18.8757 20 19.1352 19.8957 19.3321 19.7061C19.7506 19.3034 19.764 18.6357 19.3613 18.2168ZM8.4207 2.10652C11.7118 2.10652 14.3892 4.78391 14.3892 8.07499C14.3892 11.3661 11.7118 14.0435 8.4207 14.0435C5.12961 14.0435 2.45222 11.3661 2.45222 8.07499C2.45222 4.78391 5.12961 2.10652 8.4207 2.10652Z" fill="#FF868E"/>
-					</g>
-					<defs>
-					<clipPath id="clip0_1_1573">
-					<rect width="20" height="20" fill="white"/>
-					</clipPath>
-					</defs>
-				</svg>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="search-20" clip-path="url(#clip0_1_1573)">
+                  <path
+                    id="Vector"
+                    d="M19.3613 18.2168L14.6012 13.2662C15.8251 11.8113 16.4957 9.98069 16.4957 8.07499C16.4957 3.62251 12.8732 0 8.4207 0C3.96821 0 0.345703 3.62251 0.345703 8.07499C0.345703 12.5275 3.96821 16.15 8.4207 16.15C10.0922 16.15 11.6851 15.6458 13.047 14.6888L17.8432 19.677C18.0436 19.8852 18.3133 20 18.6022 20C18.8757 20 19.1352 19.8957 19.3321 19.7061C19.7506 19.3034 19.764 18.6357 19.3613 18.2168ZM8.4207 2.10652C11.7118 2.10652 14.3892 4.78391 14.3892 8.07499C14.3892 11.3661 11.7118 14.0435 8.4207 14.0435C5.12961 14.0435 2.45222 11.3661 2.45222 8.07499C2.45222 4.78391 5.12961 2.10652 8.4207 2.10652Z"
+                    fill="#FF868E"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1_1573">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
             </button>
           </form>
           <button
@@ -94,8 +123,8 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, bree
             />
           </button>
         </nav>
-        <div className={styles.content}>
-          <div className={styles.content__header}>
+        <div className={styles.section}>
+          <div className={styles.section__header}>
             <button className={styles.arrow} onClick={() => router.back()}>
               <svg
                 width="20"
@@ -125,15 +154,16 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, bree
               {activeItem}
             </div>
             {activeItem === "breeds" &&
-              (breedId != undefined ?
+              (breedId != undefined ? (
                 <div className={styles.title}>{breedId}</div>
-				:<BreedsNav />
-              )}
+              ) : (
+                <BreedsNav />
+              ))}
             {activeItem === "gallery" && <GalleryNav />}
           </div>
           {children}
         </div>
-      </>
+      </main>
     );
 };
 export default ContentLayout;

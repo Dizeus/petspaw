@@ -6,7 +6,9 @@ import Image from "next/image";
 
 export const Home = () =>{
   return (
+	<main className={styles.content}>
        	<div className={styles.home}>
 			<Image className={styles.home__img} layout={'fixed'} alt='girl and a pet image' src={girlImage}/>
-		</div>)
+		</div>
+	</main>)
 }

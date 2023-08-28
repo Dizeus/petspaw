@@ -4,17 +4,17 @@ import voting from "../assets/images/vote-table.png"
 import breeds from "../assets/images/pet-breeds.png"
 import gallery from "../assets/images/images-search.png"
 import Head from 'next/head';
-
-import DarkMode from '@/components/ThemeSwitch';
+import ThemeSwitch from '@/components/ThemeSwitch';
+import { cloneElement, isValidElement, Children, useState } from 'react';
+import { useRouter } from 'next/router';
 interface MainLayoutProps {
 	activeItem?: string,
 	children: any
 }
 
-
 const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
-
-	
+	const [burgerActive, setburgerActive] = useState(false);
+	const router = useRouter()
     return (
       <>
         <Head>
@@ -47,10 +47,17 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
         </Head>
         <div className={styles.wrapper}>
           <div className={styles.wrapper__container}>
-            <div className={styles.menu}>
+            <div
+              className={
+                burgerActive
+                  ? `${styles.menu} ${styles.menu_active}`
+                  : styles.menu
+              }
+            >
               <div className={styles.menu__container}>
                 <div className={styles.menu__logo}>
                   <svg
+                    onClick={() => router.push("/")}
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -83,6 +90,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                     />
                   </svg>
                   <svg
+                    onClick={() => router.push("/")}
                     className={styles.menu__petspaw}
                     xmlns="http://www.w3.org/2000/svg"
                     width="73"
@@ -119,9 +127,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                       fill="#1D1D1D"
                     />
                   </svg>
-				  <DarkMode/>
+                  <ThemeSwitch />
                 </div>
-               <div className={styles.menu__greeting}>
+                <div className={styles.menu__greeting}>
                   <div className={styles.menu__greetingTitle}>Hi!👋</div>
                   <div className={styles.menu__greetingSubtitle}>
                     Welcome to MacPaw Bootcamp 2023
@@ -151,7 +159,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                 </div>
               </div>
             </div>
-            <main className={styles.content}>{children}</main>
+            {Children.map(children, (child: React.ReactNode) => {
+              if (!isValidElement(child)) return null;
+              return cloneElement(child, {
+                ...(child ? child.props : {}),
+                //style: {...(styles.icon || {}), ...child.props.style},
+                setburgerActive: setburgerActive,
+                burgerActive: burgerActive,
+              });
+            })}
           </div>
         </div>
       </>

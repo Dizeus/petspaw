@@ -7,12 +7,20 @@
 	height: 100%;
 	position: relative;
 	overflow: visible;
-
 	&__img {
 		position: absolute;
-		top: -20px;
-		left: -60px;
-		width: 775px;
-		height: 900px;
+		top: 50%;
+		left: -30px;
+		width: 110%;
+		height: auto;
+		transform: translateY(-50%);
+	}
+		
+}
+
+.content {
+	flex: 0 1 680px;
+	@media (max-width:767.98px) {
+		display: none;
 	}
 }
