@@ -1,7 +1,7 @@
 import MainLayout from "@/layouts/MainLayout";
 import styles from "@/styles/Modal.module.scss";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "@/api/api";
 import succsess from "@/assets/icons/success-20.svg"
@@ -10,7 +10,7 @@ import Image from "next/image";
 
 const Index = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const filePicker = useRef<any>(null);
 	const [isDragEnter, setDragEnter] = useState(false)
 	const [previewUrl, setPreviewUrl] = useState<string>();
 	const [myFile, setMyFile] = useState<File>();
@@ -51,16 +51,17 @@ const Index = () => {
     }
 
     function dropHandler(event: any) {
-      event.preventDefault();
-      event.stopPropagation();
-      const file = event.dataTransfer.files[0];
-		if(file !== undefined){
-			setPreviewUrl(URL.createObjectURL(file));
-			setMyFile(file)
-			URL.revokeObjectURL(file)
-		}
-	  
-      setDragEnter(false);
+		event.preventDefault();
+		event.stopPropagation();
+		console.log(event.target.files);
+		const file = event.dataTransfer?.files[0] || event.target.files;
+			if(file !== undefined){
+				setPreviewUrl(URL.createObjectURL(file));
+				setMyFile(file)
+				URL.revokeObjectURL(file)
+			}
+		
+		setDragEnter(false);
     }
 
 
@@ -80,8 +81,10 @@ const Index = () => {
           <a href="https://thecatapi.com/privacy">upload guidelines</a> or face
           deletion.
         </div>
+		<input type="file" className={styles.hidden} ref={filePicker} onChange={dropHandler} accept="image/*, .png, .jpg, .gif"/>
         <div
           onDrop={dropHandler}
+		  onClick={()=>(filePicker.current && filePicker.current.click())}
           onDragEnter={dragEnterHandler}
           onDragLeave={dragLeaveHandler}
           onDragOver={dragEnterHandler}
