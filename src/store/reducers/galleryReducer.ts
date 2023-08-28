@@ -2,7 +2,6 @@ import {GalleryAction, GalleryActionTypes, GalleryState} from "../../types/galle
 import {Dispatch} from "react";
 import {api} from "@/api/api";
 import {setImages} from "@/store/actions-creators/gallery";
-import { CatImage } from "@/types/CatImage";
 
 
 const initialState: GalleryState = {

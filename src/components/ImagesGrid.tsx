@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import styles from "@/styles/ImagesGrid.module.scss";
 import { useRouter } from "next/router";
 import { CatImage } from "@/types/CatImage";
-import Image from "next/image";
-import fav from '@/assets/icons/fav-20.svg'
-import favFull from '@/assets/icons/fav-color-20.svg'
 import { useDispatch } from "react-redux";
 import { addFav } from "@/store/reducers/voteReducer";
 import { HistoryItem } from "@/types/HistoryItem";

@@ -163,7 +163,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
               if (!isValidElement(child)) return null;
               return cloneElement(child, {
                 ...(child ? child.props : {}),
-                //style: {...(styles.icon || {}), ...child.props.style},
                 setburgerActive: setburgerActive,
                 burgerActive: burgerActive,
               });

@@ -2,7 +2,6 @@ import {BreedsAction, BreedsActionTypes, BreedsState} from "../../types/breeds";
 import {Dispatch} from "react";
 import {api} from "@/api/api";
 import {setImages} from "@/store/actions-creators/breeds";
-import { CatImage } from "@/types/CatImage";
 
 
 const initialState: BreedsState = {

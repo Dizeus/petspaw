@@ -1,9 +1,6 @@
 import MainLayout from "@/layouts/MainLayout";
 import styles from "@/styles/Modal.module.scss";
-import ContentLayout from "@/layouts/ContentLayout";
-import { NextThunkDispatch, wrapper } from "@/store";
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "@/api/api";
@@ -57,7 +54,6 @@ const Index = () => {
       event.preventDefault();
       event.stopPropagation();
       const file = event.dataTransfer.files[0];
-	  console.log(file)
 		if(file !== undefined){
 			setPreviewUrl(URL.createObjectURL(file));
 			setMyFile(file)

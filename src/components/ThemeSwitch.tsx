@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "@/styles/ThemeSwitch.module.scss"
 import { useTheme } from "next-themes";
+
 const ThemeSwitch = () => {
 	const { theme, setTheme } = useTheme();
   return (

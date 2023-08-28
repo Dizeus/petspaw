@@ -2,7 +2,6 @@ import MainLayout from "@/layouts/MainLayout";
 import ContentLayout from "@/layouts/ContentLayout";
 import styles from "@/styles/Search.module.scss";
 import { api } from "@/api/api";
-import { useState } from "react";
 import { CatImage } from "@/types/CatImage";
 import { NextPageContext } from "next";
 import { ImagesGrid } from "@/components/ImagesGrid";
@@ -23,8 +22,6 @@ BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
 };
 
 export default function BreedInfo({ result, que }: { result: CatImage[], que: string }) {
-
-	console.log(result);
   return (
     <MainLayout activeItem="none">
       <ContentLayout activeItem="search" searchque={que}>
