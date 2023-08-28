@@ -49,9 +49,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
           <div className={styles.wrapper__container}>
             <div
               className={
-                burgerActive
-                  ? `${styles.menu} ${styles.menu_active}`
-                  : styles.menu
+                children._source?.fileName.slice(-15) === 'pages\\index.tsx'?
+				`${styles.menu}`
+				:(burgerActive
+                    ? `${styles.menu} ${styles.menu_active} ${styles.menu__notHome}`
+                    : `${styles.menu__notHome} ${styles.menu}`)   
               }
             >
               <div className={styles.menu__container}>
