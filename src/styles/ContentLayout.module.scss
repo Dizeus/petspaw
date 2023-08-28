@@ -174,12 +174,12 @@
 			background-color: $coral;
 		}
 		.subtitle{
-			background-color: $lightCoral;
+			background-color: $lightCoralTransparent;
 			color: $coral;
 			transition: all 0.2s ease-in-out 0s;
 			&:hover{
 				background-color: $coral;
-				color: $lightBackground;
+				color: #FFF;
 			}
 		}
 		@media (max-width:599.98px) {

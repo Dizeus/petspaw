@@ -5,9 +5,6 @@ axios.defaults.headers.common['x-api-key'] = 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvL
 const subId = "tester1234";
 
 export const api = {
-    async getImage(){
-        return await axios.get('/images/search')
-    },
     async getHistory(limit: number){
         return await axios.get(`/votes?limit=${limit}&order=DESC&sub_id=${subId}`)
     },
@@ -20,11 +17,8 @@ export const api = {
     async removeFav(idFav: number){
         return await axios.delete(`/favourites/${idFav}`)
     },
-   	async getBreed(breed: string | undefined | string[]){
-        return await axios.get(`/images/search?breed_ids=${breed}&limit=5`);
-    },
-	async getBreedImages(breed: string | undefined | string[]){
-        return await axios.get(`/images/search?limit=5&&breed_ids=${breed}`);
+	async getBreedImages(limit: number, breed: string | undefined | string[]){
+        return await axios.get(`/images/search?&breed_ids=${breed}&limit=${limit}`);
     },
 	async getBreeds(){
         return await axios.get(`/breeds`);

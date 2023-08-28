@@ -24,7 +24,7 @@ export const voteReducer = (state = initialState, action: VoteAction): VoteState
 
 export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
     try {
-		const responseImage = await api.getImage()
+		const responseImage = await api.getImages(1, "RAND", "png,jpg,gif", 1)
 		dispatch(setImage(responseImage.data[0]))
         const responseHistory  = await api.getHistory(4)
 		dispatch(setHistory(responseHistory.data))
@@ -39,7 +39,7 @@ export const vote = (id: string, value: number) => async (dispatch: Dispatch<Vot
 		if(response.status === 201){
 			if(value<2){
 				//if not favourites actions
-				const responseImage = await api.getImage()
+				const responseImage = await api.getImages(1, "RAND", "png,jpg,gif", 1)
 				dispatch(setImage(responseImage.data[0]))
 			}
 			dispatch(setHistory([{id: response.data.id, sub_id: response.data.sub_id, value: response.data.value, image_id: response.data.image_id, created_at: String(Date())}]))

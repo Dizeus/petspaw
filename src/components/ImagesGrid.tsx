@@ -54,7 +54,7 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, onFavClick
 								</button>
 							</div>
 							:
-							hover ==='fav'?
+							(hover ==='fav' &&
 							<div className={styles.grid__modalFav}>
 								<button onClick={()=>{onClickFav(String(image.image_id || image.id), Number(image.id));}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_fav}`}>
 									{fav?.includes(String(image.image_id || image.id))?
@@ -71,13 +71,7 @@ export const ImagesGrid: React.FC<ImagesGridProps> = ({images, hover, onFavClick
 										</svg>
 									}	
 								</button>
-							</div>
-							:
-							<div className={styles.grid__modalName}>
-								{/*<button onClick={()=>{}} className={`${styles.grid__modalButton} ${styles.grid__modalButton_def}`}>
-									<Image src={fav} alt="fav"/>
-								</button>*/}
-							</div>
+							</div>)
 							}
 						</div>
 					))}

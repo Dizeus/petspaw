@@ -7,7 +7,7 @@ import { CatImage } from "@/types/CatImage";
 import { NextPageContext } from "next";
 
 BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
-  const res = await api.getBreed(ctx.query.breed);
+  const res = await api.getBreedImages(5, ctx.query.breed);
   return { breedInfo: res.data };
 };
 
