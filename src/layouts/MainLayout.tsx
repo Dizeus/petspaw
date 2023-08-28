@@ -49,7 +49,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
           <div className={styles.wrapper__container}>
             <div
               className={
-                children._source?.fileName.slice(-15) === 'pages\\index.tsx'?
+                !activeItem?
 				`${styles.menu}`
 				:(burgerActive
                     ? `${styles.menu} ${styles.menu_active} ${styles.menu__notHome}`
