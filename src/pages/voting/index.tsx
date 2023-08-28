@@ -11,9 +11,7 @@ import like from "@/assets/icons/like-color-20.svg";
 import dislike from "@/assets/icons/dislike-color-20.svg";
 import favourite from "@/assets/icons/fav-20.svg";
 const Index = () => {
-  const { history, image, inFavourites } = useTypedSelector(
-    (state) => state.vote
-  );
+  const { history, image, inFavourites } = useTypedSelector((state) => state.vote);
   const dispatch = useDispatch();
 
   const onFavClick = () => {

@@ -2,7 +2,8 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 axios.defaults.headers.common['x-api-key'] = 'live_0agdR6MKs2xLWcYUBzYS16bZi9yvLL8sEeNzzaGbjNkWVJ6cs1CLVdEzBLKoVWVq';
 
-const subId = "newone";
+const subId = "tester1234";
+
 export const api = {
     async getImage(){
         return await axios.get('/images/search')
