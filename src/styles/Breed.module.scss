@@ -40,6 +40,7 @@
 		background-color: $lightCoral;
 		border-radius: 50%;
 		cursor: pointer;
+		transition: all 0.2s ease-in-out 0s;
 		&_active{
 			background-color: $coral;
 		}

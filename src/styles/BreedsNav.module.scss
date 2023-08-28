@@ -11,7 +11,7 @@
 		color: $grey;
 		height: 40px;
 		cursor: pointer;
-
+		transition: all 0.2s ease-in-out 0s;
 		&:hover {
 			border: 2px solid $lightCoral;
 		}
@@ -25,13 +25,16 @@
 		outline: none;
 		font-family: Jost;
 		text-align: left;
-
 		option {
 			font-size: 16px;
 			font-family: Jost;
 		}
 	}
-
+	&__limit{
+		@media (max-width:599.98px) {
+			width: 55%;
+		}
+	}
 	&__sort {
 		flex: 0 0 40px;
 		display: flex;

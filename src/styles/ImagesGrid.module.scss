@@ -6,30 +6,37 @@
 	grid-template-columns: repeat(3, 1fr);
 	grid-auto-rows: 140px;
 	grid-auto-flow: dense;
+	@media (max-width:599.98px) {
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+	}
 	&:not(:last-child) {
 		margin-bottom: 20px;
 	}
 	&__imageContainer {
 		position: relative;
-		&:nth-child(10n+1){
-			grid-row: span 2;
-		}
-		&:nth-child(10n+4){
-			grid-column: span 2;
-			grid-row: span 2;
-		}
-		&:nth-child(10n+8){
-			grid-row: span 2;
-		}
-		&:nth-child(10n+9){
-			grid-column: span 2;
-			grid-row: span 2;
+		@media (min-width:599.98px) {
+			&:nth-child(10n+1){
+				grid-row: span 2;
+			}
+			&:nth-child(10n+4){
+				grid-column: span 2;
+				grid-row: span 2;
+			}
+			&:nth-child(10n+8){
+				grid-row: span 2;
+			}
+			&:nth-child(10n+9){
+				grid-column: span 2;
+				grid-row: span 2;
+			}
 		}
 		&:hover {
 			.grid__modalFav, .grid__modalName {
 				display: flex;
 			}
-		}		
+		}
+				
 	}
 
 
@@ -43,7 +50,7 @@
 
 	&__modalName, &__modalFav{
 		display: none;
-		background-color: rgba($color: $coral, $alpha: 0.6);
+		background-color: #ff868e9b;
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -67,6 +74,7 @@
 		padding: 5px 0;
 		width: 100%;
 		line-height: 150%;
+		transition: all 0.2s ease-in-out 0s;
 		&:hover{
 			background-color: $coral;
 			color: #FFF;

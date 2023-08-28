@@ -81,45 +81,47 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, bree
               </svg>
             </button>
           </form>
-          <button
-            onClick={() => router.push("/likes")}
-            className={
-              activeItem === "likes"
-                ? `${styles.search__link} ${styles.search__link_active}`
-                : styles.search__link
-            }
-          >
-            <Image
-              alt="likes"
-              src={activeItem === "likes" ? likesActive : likes}
-            />
-          </button>
-          <button
-            onClick={() => router.push("/favourites")}
-            className={
-              activeItem === "favourites"
-                ? `${styles.search__link} ${styles.search__link_active}`
-                : styles.search__link
-            }
-          >
-            <Image
-              alt="favourites"
-              src={activeItem === "favourites" ? favActive : fav}
-            />
-          </button>
-          <button
-            onClick={() => router.push("/dislikes")}
-            className={
-              activeItem === "dislikes"
-                ? `${styles.search__link} ${styles.search__link_active}`
-                : styles.search__link
-            }
-          >
-            <Image
-              alt="dislikes"
-              src={activeItem === "dislikes" ? dislikesActive : dislikes}
-            />
-          </button>
+          <div className={styles.search__buttons}>
+            <button
+              onClick={() => router.push("/likes")}
+              className={
+                activeItem === "likes"
+                  ? `${styles.search__link} ${styles.search__link_active}`
+                  : styles.search__link
+              }
+            >
+              <Image
+                alt="likes"
+                src={activeItem === "likes" ? likesActive : likes}
+              />
+            </button>
+            <button
+              onClick={() => router.push("/favourites")}
+              className={
+                activeItem === "favourites"
+                  ? `${styles.search__link} ${styles.search__link_active}`
+                  : styles.search__link
+              }
+            >
+              <Image
+                alt="favourites"
+                src={activeItem === "favourites" ? favActive : fav}
+              />
+            </button>
+            <button
+              onClick={() => router.push("/dislikes")}
+              className={
+                activeItem === "dislikes"
+                  ? `${styles.search__link} ${styles.search__link_active}`
+                  : styles.search__link
+              }
+            >
+              <Image
+                alt="dislikes"
+                src={activeItem === "dislikes" ? dislikesActive : dislikes}
+              />
+            </button>
+          </div>
         </nav>
         <div className={styles.section}>
           <div className={styles.section__header}>

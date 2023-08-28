@@ -17,12 +17,16 @@
 		height: 40px;
 		column-gap: 10px;
 		margin-left: auto;
+		transition: all 0.2s ease-in-out 0s;
 		&:hover{
 			color: #FFF;
 			background-color: $coral;
 			path{
 				fill: #FFF;
 			}
+		}
+		@media (max-width:599.98px) {
+			width: 100%;
 		}
 	}
 	&__filters{
@@ -80,6 +84,7 @@
 		margin-left: 10px;
 		height: 40px;
 		border-radius: 10px;
+		transition: all 0.2s ease-in-out 0s;
 		&:hover{
 			background-color: $coral;
 			path{

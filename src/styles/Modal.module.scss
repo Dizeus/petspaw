@@ -27,6 +27,7 @@
 		cursor: pointer;
 		background-color: $lightBackground;
 		border-radius: 10px;
+		transition: all 0.2s ease-in-out 0s;
 		&:hover{
 			background-color: $coral;
 			color: #FFF;
@@ -95,7 +96,7 @@
 		font-weight: 500;
 		letter-spacing: 2px;
 		line-height: 133%;
-
+		transition: all 0.2s ease-in-out 0s;
 		&:hover{
 			background-color: $lightCoral;
 			color: $coral;

@@ -19,13 +19,17 @@
 }
 .menu{
   flex: 0 0 446px;
+	transition: all 0.3s ease-in-out 0s;
   &__container{
 	position: fixed;
-    width: 446px;
     margin: 0 auto;
 	@media (max-width:767.98px) {
 		position: relative;
 		flex: 1 0 446px;
+	}
+	@media (max-width:499.98px) {
+		width: 100%;
+		padding: 10px;
 	}
   }
   &__logo{
@@ -86,6 +90,8 @@
 .navbar{
   display: flex;
   justify-content: space-between;
+  gap: 20px;
+  
   &__item{
     text-align: center;
     cursor: pointer;
@@ -127,6 +133,7 @@
     }
   }
   &__imgContainer{
+	transition: all 0.2s ease-in-out 0s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,6 +143,9 @@
     border-radius: 20px;
     border: 4px solid rgba(255,255,255, 0.6);
     margin: 0 0 10px 0;
+	@media (max-width:499.98px) {
+		display: none;
+		}
 
   }
   &__img{
@@ -147,15 +157,17 @@
     background-color: $lightBackground;
     color: $coral;
     border-radius: 10px;
-    width: 138px;
+	width: 100%;
     height: 36px;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
     letter-spacing: 2px;
-
+	transition: all 0.2s ease-in-out 0s;
   }
-
+  @media (max-width:499.98px) {
+  	flex-direction: column;
+  }
 }
 
 
