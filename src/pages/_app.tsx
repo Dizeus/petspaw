@@ -4,7 +4,7 @@ import {wrapper} from "../store";
 import '../styles/globall.scss'
 import { ThemeProvider } from "next-themes";
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => (
-  <ThemeProvider attribute="class" enableSystem={true}>
+  <ThemeProvider attribute="class" enableSystem={false}>
     <Component {...pageProps} />
   </ThemeProvider>
 );

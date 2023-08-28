@@ -9,7 +9,7 @@ const ThemeSwitch = () => {
       <input
         className={styles.dark_mode_input}
         type="checkbox"
-        defaultChecked={theme === "dark"}
+        defaultChecked={false}
         id="darkmode-toggle"
       />
       <label
