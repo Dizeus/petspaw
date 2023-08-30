@@ -23,11 +23,8 @@ export const api = {
 	async getBreeds(){
         return await axios.get(`/breeds`);
     },
-	async getBreedsImages(limit: number){
-        return await axios.get(`/images/search?has_breeds=1&limit=${limit}`);
-    },
-	async getImages(limit: number, order: string, type: string, page:number, breed?: string){
-		return await axios.get(`/images/search?limit=${limit}&order=${order}&mime_types=${type}&page=${page}${breed?'&breed_ids='+breed:''}`);
+	async getImages(limit: number = 10, order: string = "RAND", type: string = "gif,png,jpg", page:number=1, breed?: string, has_breeds?:boolean){
+		return await axios.get(`/images/search?limit=${limit}&order=${order}&mime_types=${type}&page=${page}${breed?'&breed_ids='+breed:''}${has_breeds?'&has_breeds=1':''}`);
 	},
 	async uploadFile(formData: FormData){
 		return await axios.post("/images/upload", formData, { headers: { "Content-Type": "multipart/form-data" } })	

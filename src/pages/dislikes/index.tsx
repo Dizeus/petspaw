@@ -6,7 +6,6 @@ import { NextPageContext } from "next";
 import { api } from "@/api/api";
 import { HistoryItem } from "@/types/HistoryItem";
 
-
 const Index = ({history}: {history: HistoryItem[]}) => {
 
 	const dislikes: HistoryItem[] = history.filter(x=>x.value===-1)

@@ -16,7 +16,7 @@ BreedInfo.getInitialProps = async (ctx: NextPageContext) => {
   
 };
 
-export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
+function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
   const [page, setPage] = useState(0);
   const breed = breedInfo[0].breeds[0];
 
@@ -74,3 +74,5 @@ export default function BreedInfo({ breedInfo }: { breedInfo: CatImage[] }) {
     </MainLayout>
   );
 }
+
+export default BreedInfo;

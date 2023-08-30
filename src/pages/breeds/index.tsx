@@ -5,15 +5,18 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { initializeBreeds } from "@/store/reducers/breedsReducer";
 import styles from "@/styles/Breeds.module.scss";
 import { ImagesGrid } from "@/components/ImagesGrid";
+import Loader from "@/components/Loader";
 
 const Index = () => {
-  const {images } = useTypedSelector((state) => state.breeds);
+  const {images, isBreedsFetching } = useTypedSelector((state) => state.breeds);
 
   return (
     <MainLayout activeItem="breeds">
       <ContentLayout activeItem="breeds">
         <div className={styles.breeds}>
-			<ImagesGrid hover="name" images={images}/>
+          <Loader isFetching={isBreedsFetching} width={200} height={400}>
+            <ImagesGrid hover="name" images={images} />
+          </Loader>
         </div>
       </ContentLayout>
     </MainLayout>

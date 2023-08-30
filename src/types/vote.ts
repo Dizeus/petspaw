@@ -3,13 +3,16 @@ import { HistoryItem } from "./HistoryItem";
 export interface VoteState {
     image: null | CatImage,
 	history: HistoryItem[]
-	inFavourites: number | null
+	inFavourites: number | null,
+	isHistoryFetching: boolean,
+	isImageFetching: boolean,
 }
 
 export enum VoteActionTypes {
 	SET_HISTORY = "SET_HISTORY",
 	SET_IMAGE = "SET_IMAGE",
-	SET_IN_FAVOURITES = "SET_IN_FAVOURITES"
+	SET_IN_FAVOURITES = "SET_IN_FAVOURITES",
+	SET_IS_IMAGE_FETCHING = "SET_IS_IMAGE_FETCHING"
 }
 
 interface setHistoryAction {
@@ -27,7 +30,12 @@ interface setInFavouritesAction {
 	payload: number | null
 }
 
+interface setIsImageFetching {
+    type: VoteActionTypes.SET_IS_IMAGE_FETCHING,
+	payload: boolean
+}
 export type VoteAction =
 	| setHistoryAction 
 	| setImageAction
 	| setInFavouritesAction
+	| setIsImageFetching

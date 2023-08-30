@@ -9,7 +9,6 @@ import { addFav } from "@/store/reducers/voteReducer";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-
 const Index = ({ fav }: { fav: HistoryItem[] }) => {
 	const [images, setImages] = useState<HistoryItem[]>(fav);
 	const [history, setHistory] =useState<{ image_id: string; created_at: string }[]>([]);

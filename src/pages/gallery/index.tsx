@@ -7,9 +7,10 @@ import { setLimit, setBreed, setOrder, setType, setPage } from "@/store/actions-
 import { getImages} from "@/store/reducers/galleryReducer";
 import { ImagesGrid } from "@/components/ImagesGrid";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import Loader from "@/components/Loader";
 
 const Index = () => {
-	const {images, order, type, breed, limit, page} = useTypedSelector((state)=>state.gallery)
+	const {images, order, type, breed, limit, page, isFetching} = useTypedSelector((state)=>state.gallery)
   	const dispatch = useDispatch();
 	
 	const onChangeOrder = (newOrder: string) =>{
@@ -145,31 +146,45 @@ const Index = () => {
             <div
               className={`${styles.gallery__filter} ${styles.gallery__filter_load}`}
             >
-			 <div>
-				<div className={styles.gallery__filterTitle}>Limit</div>
-				<select
-					defaultValue={10}
-					onChange={(e) => onChangeLimit(Number(e.target.value))}
-					className={styles.gallery__dropdown}
-					name="limit"
-				>
-					<option value={5}>5 items per page</option>
-					<option value={10}>10 items per page</option>
-					<option value={15}>15 items per page</option>
-					<option value={20}>20 items per page</option>
-				</select>
-			  </div>
+              <div>
+                <div className={styles.gallery__filterTitle}>Limit</div>
+                <select
+                  defaultValue={10}
+                  onChange={(e) => onChangeLimit(Number(e.target.value))}
+                  className={styles.gallery__dropdown}
+                  name="limit"
+                >
+                  <option value={5}>5 items per page</option>
+                  <option value={10}>10 items per page</option>
+                  <option value={15}>15 items per page</option>
+                  <option value={20}>20 items per page</option>
+                </select>
+              </div>
               <button onClick={onClickLoad} className={styles.gallery__load}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<g id="update-20">
-					<path id="Vector (Stroke)" fillRule="evenodd" clipRule="evenodd" d="M9.48189 2.49989L7.93396 0.953004L8.88633 0L12.0577 3.16928L8.88634 6.33873L7.93395 5.38576L9.47232 3.84832C5.51244 3.99813 2.3473 7.25498 2.3473 11.2478C2.3473 15.3361 5.66547 18.6527 9.75744 18.6527C13.8494 18.6527 17.1676 15.3361 17.1676 11.2478V10.5742H18.5149V11.2478C18.5149 16.081 14.5927 20 9.75744 20C4.92221 20 1 16.081 1 11.2478C1 6.50682 4.77407 2.64542 9.48189 2.49989Z" fill="#FF868E"/>
-					</g>
-				</svg>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="update-20">
+                    <path
+                      id="Vector (Stroke)"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M9.48189 2.49989L7.93396 0.953004L8.88633 0L12.0577 3.16928L8.88634 6.33873L7.93395 5.38576L9.47232 3.84832C5.51244 3.99813 2.3473 7.25498 2.3473 11.2478C2.3473 15.3361 5.66547 18.6527 9.75744 18.6527C13.8494 18.6527 17.1676 15.3361 17.1676 11.2478V10.5742H18.5149V11.2478C18.5149 16.081 14.5927 20 9.75744 20C4.92221 20 1 16.081 1 11.2478C1 6.50682 4.77407 2.64542 9.48189 2.49989Z"
+                      fill="#FF868E"
+                    />
+                  </g>
+                </svg>
               </button>
             </div>
           </div>
           <div className={styles.gallery__grid}>
-            <ImagesGrid hover="fav" images={images} />
+            <Loader isFetching={isFetching} width={200} height={400}>
+              <ImagesGrid hover="fav" images={images} />
+            </Loader>
           </div>
         </div>
       </ContentLayout>
@@ -182,7 +197,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     const dispatch = store.dispatch as NextThunkDispatch;
     await dispatch(await getImages(10, "RAND", "jpg,png", 1));
-	
   }
 );
 

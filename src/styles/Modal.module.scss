@@ -86,7 +86,7 @@
 		line-height: 150%;
 		margin-bottom: 20px;
 	}
-	&__upload{
+	&__upload, &__uploading{
 		background-color: $coral;
 		text-transform: uppercase;
 		border-radius: 10px;
@@ -97,10 +97,16 @@
 		letter-spacing: 2px;
 		line-height: 133%;
 		transition: all 0.2s ease-in-out 0s;
+		margin-bottom: 10px;
 		&:hover{
 			background-color: $lightCoral;
 			color: $coral;
 		}
+	}
+	&__uploading{
+		display: inline-flex;
+		column-gap: 10px;
+		background-color: $lightCoralTransparent;
 	}
 	&__result{
 		padding: 20px;

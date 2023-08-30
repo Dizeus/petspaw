@@ -5,7 +5,7 @@ import breeds from "../assets/images/pet-breeds.png"
 import gallery from "../assets/images/images-search.png"
 import Head from 'next/head';
 import ThemeSwitch from '@/components/ThemeSwitch';
-import { cloneElement, isValidElement, Children, useState } from 'react';
+import { cloneElement, isValidElement, Children, useState} from 'react';
 import { useRouter } from 'next/router';
 interface MainLayoutProps {
 	activeItem?: string,

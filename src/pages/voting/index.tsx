@@ -1,4 +1,5 @@
 import MainLayout from "@/layouts/MainLayout";
+import {Suspense, useState} from 'react' 
 import styles from "@/styles/Voting.module.scss";
 import ContentLayout from "@/layouts/ContentLayout";
 import { initializeVoting } from "@/store/reducers/voteReducer";
@@ -10,25 +11,30 @@ import Image from "next/image";
 import like from "@/assets/icons/like-color-20.svg";
 import dislike from "@/assets/icons/dislike-color-20.svg";
 import favourite from "@/assets/icons/fav-20.svg";
-const Index = () => {
-  const { history, image, inFavourites } = useTypedSelector((state) => state.vote);
-  const dispatch = useDispatch();
+import Loader from "@/components/Loader";
 
-  const onFavClick = () => {
-    dispatch(addFav(image ? image.id : "1", inFavourites));
-    if (!inFavourites) {
-      dispatch(vote(image ? image.id : "1", 2));
-    } else {
-      dispatch(vote(image ? image.id : "1", 3));
-    }
-  };
+const Index = () => {
+
+	const { history, image, inFavourites, isHistoryFetching, isImageFetching } = useTypedSelector((state) => state.vote);
+	const dispatch = useDispatch();
+
+	const onFavClick = () => {
+		dispatch(addFav(image ? image.id : "1", inFavourites));
+		if (!inFavourites) {
+		dispatch(vote(image ? image.id : "1", 2));
+		} else {
+		dispatch(vote(image ? image.id : "1", 3));
+		}
+	};
 
   return (
     <MainLayout activeItem="voting">
       <ContentLayout activeItem="voting">
         <div className={styles.voting}>
           <div className={styles.voting__relative}>
-            <img className={styles.voting__img} src={image?.url} alt="cat" />
+            <Loader isFetching={isImageFetching} width={100} height={360}>
+              <img className={styles.voting__img} src={image?.url} alt="cat" />
+            </Loader>
             <div className={styles.voting__pannelContainer}>
               <div className={styles.voting__pannel}>
                 <div
@@ -116,40 +122,39 @@ const Index = () => {
             </div>
           </div>
           <div className={styles.history}>
-            {history.length > 0
-              ? history.map((x) => (
-                  <div key={x.id} className={styles.history__element}>
-                    <div className={styles.history__date}>
-                      {x.created_at &&
-                        String(new Date(x.created_at)).slice(15, 21)}
-                    </div>
-                    <div className={styles.history__message}>
-                      Image ID: <span>{x.image_id}</span> was{" "}
-                      {x.value === 3 ? "removed from" : "added to"}{" "}
-                      {x.value === -1
-                        ? "Dislikes"
-                        : x.value === 1
-                        ? "Likes"
-                        : "Favourites"}
-                    </div>
-                    {x.value !== 3 && (
-                      <Image
-                        src={
-                          x.value === -1
-                            ? dislike
-                            : x.value === 1
-                            ? like
-                            : favourite
-                        }
-                        alt="icon"
-                      />
-                    )}
+            {history.length > 0 ? (
+              history.map((x) => (
+                <div key={x.id} className={styles.history__element}>
+                  <div className={styles.history__date}>
+                    {x.created_at &&
+                      String(new Date(x.created_at)).slice(15, 21)}
                   </div>
-                ))
-              :
-			   <div className={styles.noitem}>
-					No history found
-				</div>}
+                  <div className={styles.history__message}>
+                    Image ID: <span>{x.image_id}</span> was{" "}
+                    {x.value === 3 ? "removed from" : "added to"}{" "}
+                    {x.value === -1
+                      ? "Dislikes"
+                      : x.value === 1
+                      ? "Likes"
+                      : "Favourites"}
+                  </div>
+                  {x.value !== 3 && (
+                    <Image
+                      src={
+                        x.value === -1
+                          ? dislike
+                          : x.value === 1
+                          ? like
+                          : favourite
+                      }
+                      alt="icon"
+                    />
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className={styles.noitem}>No history found</div>
+            )}
           </div>
         </div>
       </ContentLayout>

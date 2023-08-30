@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "@/styles/404.module.scss";
 import { useRouter } from "next/router";
+import withLoading from "@/HOC/WithLoading";
 const Index = () => {
 	const router = useRouter()
   return (
@@ -11,4 +12,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default withLoading(Index);

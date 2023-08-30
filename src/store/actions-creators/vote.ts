@@ -13,3 +13,6 @@ export const setImage = (payload: CatImage): VoteAction => {
 export const setInFavourites = (payload: number | null): VoteAction => {
     return {type: VoteActionTypes.SET_IN_FAVOURITES, payload}
 }
+export const setIsImageFetching = (payload: boolean): VoteAction => {
+    return {type: VoteActionTypes.SET_IS_IMAGE_FETCHING, payload}
+}

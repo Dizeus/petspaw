@@ -10,6 +10,7 @@ import { BreedsNav } from '@/components/BreedsNav';
 import { GalleryNav } from '@/components/GalleryNav';
 import { useRouter } from 'next/router';
 import { useState } from "react";
+import withLoading from '@/HOC/WithLoading';
 
 interface ContentLayoutProps {
   children: any;
@@ -164,6 +165,6 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, bree
           {children}
         </div>
       </main>
-    );
+    )
 };
-export default ContentLayout;
+export default withLoading(ContentLayout);

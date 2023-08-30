@@ -24,3 +24,7 @@ export const setPage = (payload: number): GalleryAction => {
 export const setImages = (payload: CatImage[]): GalleryAction => {
     return {type: GalleryActionTypes.SET_IMAGES, payload}
 }
+
+export const setIsFetching = (payload: boolean): GalleryAction => {
+    return {type: GalleryActionTypes.SET_IS_FETCHING, payload}
+}

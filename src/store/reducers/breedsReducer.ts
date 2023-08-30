@@ -1,12 +1,14 @@
 import {BreedsAction, BreedsActionTypes, BreedsState} from "../../types/breeds";
 import {Dispatch} from "react";
 import {api} from "@/api/api";
-import {setImages} from "@/store/actions-creators/breeds";
+import {setImages, setIsBreedsFetching} from "@/store/actions-creators/breeds";
+import { setIsFetching } from "../actions-creators/gallery";
 
 
 const initialState: BreedsState = {
     currBreed: null,
     images: [],
+	isBreedsFetching: false
 }
 
 export const breedsReducer = (state = initialState, action: BreedsAction): BreedsState => {
@@ -21,7 +23,9 @@ export const breedsReducer = (state = initialState, action: BreedsAction): Breed
 		case BreedsActionTypes.SET_BREED:
             return {...state, currBreed: action.payload}
 		case BreedsActionTypes.SET_IMAGES:
-            return {...state, images: action.payload}		
+            return {...state, images: action.payload}
+		case BreedsActionTypes.SET_IS_BREEDS_FETCHING:
+            return {...state, isBreedsFetching: action.payload}			
         default:
             return state
 
@@ -31,8 +35,9 @@ export const breedsReducer = (state = initialState, action: BreedsAction): Breed
 
 export const initializeBreeds = () => async (dispatch: Dispatch<BreedsAction>) =>{
     try {
-		const responseImages = await api.getBreedsImages(10)
-		dispatch(setImages(responseImages.data))
+		const responseImages = await api.getImages(10,"RAND","gif,png,jpg",1,undefined, true)
+		if(responseImages.status == 200)
+			dispatch(setImages(responseImages.data))
     } catch (e) {
 		console.error(e)
     }
@@ -40,8 +45,13 @@ export const initializeBreeds = () => async (dispatch: Dispatch<BreedsAction>) =
 
 export const onSelectLimit = (limit: number) => async (dispatch: Dispatch<BreedsAction>) =>{
     try {
-        const responseImages = await api.getBreedsImages(limit)
-		dispatch(setImages(responseImages.data))
+		dispatch(setIsBreedsFetching(true))
+        const responseImages = await api.getImages(limit,"RAND","gif,png,jpg",1,undefined, true)
+		if(responseImages.status == 200){
+			dispatch(setImages(responseImages.data))
+			dispatch(setIsBreedsFetching(false))
+		}
+		
     } catch (e) {
 		console.error(e) 
     }

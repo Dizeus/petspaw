@@ -12,3 +12,7 @@ export const setBreed = (payload: Breed): BreedsAction => {
 export const setImages = (payload: CatImage[]): BreedsAction => {
     return {type: BreedsActionTypes.SET_IMAGES, payload}
 }
+
+export const setIsBreedsFetching = (payload: boolean): BreedsAction => {
+    return {type: BreedsActionTypes.SET_IS_BREEDS_FETCHING, payload}
+}

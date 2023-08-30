@@ -7,7 +7,8 @@ export interface GalleryState {
 	type: string,
 	breed: string,
 	limit: number,
-	page: number
+	page: number,
+	isFetching: boolean,
 }
 
 export enum GalleryActionTypes {
@@ -16,7 +17,8 @@ export enum GalleryActionTypes {
 	SET_TYPE = "SET_TYPE",
 	SET_BREED = "SET_BREED",
 	SET_LIMIT = "SET_LIMIT",
-	SET_PAGE = "SET_PAGE"
+	SET_PAGE = "SET_PAGE",
+	SET_IS_FETCHING = "SET_IS_FETCHING"
 }
 
 interface setImagesAction {
@@ -44,6 +46,10 @@ interface setPageAction {
     type: GalleryActionTypes.SET_PAGE,
 	payload: number;
 }
+interface setIsFetchingAction {
+    type: GalleryActionTypes.SET_IS_FETCHING,
+	payload: boolean;
+}
 
 export type GalleryAction =	setOrderAction
 	| setImagesAction 
@@ -51,3 +57,4 @@ export type GalleryAction =	setOrderAction
 	| setBreedAction
 	| setLimitAction 
 	| setPageAction
+	| setIsFetchingAction
