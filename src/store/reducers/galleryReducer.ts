@@ -39,6 +39,6 @@ export const getImages = (limit: number, order: string, type: string, page: numb
 		const responseImages = await api.getImages(limit, order, type, page, breed)
 		dispatch(setImages(responseImages.data))
     } catch (e) {
-
+		console.error(e)
     }
 }

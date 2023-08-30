@@ -45,8 +45,12 @@ const Index = ({ fav }: { fav: HistoryItem[] }) => {
 };
 
 Index.getInitialProps = async (ctx: NextPageContext) => {
-  const res = await api.getFavourites();
-  return { fav: res.data };
+	try{
+		const res = await api.getFavourites();
+    	return { fav: res.data };
+	}catch(e){
+		console.error(e)
+	}
 };
 
 export default Index;

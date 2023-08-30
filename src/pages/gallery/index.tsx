@@ -182,6 +182,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     const dispatch = store.dispatch as NextThunkDispatch;
     await dispatch(await getImages(10, "RAND", "jpg,png", 1));
+	
   }
 );
 

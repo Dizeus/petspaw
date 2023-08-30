@@ -29,7 +29,7 @@ export const initializeVoting = () => async (dispatch: Dispatch<VoteAction>) =>{
         const responseHistory  = await api.getHistory(4)
 		dispatch(setHistory(responseHistory.data))
     } catch (e) {
-
+		console.error(e)
     }
 }
 
@@ -45,7 +45,7 @@ export const vote = (id: string, value: number) => async (dispatch: Dispatch<Vot
 			dispatch(setHistory([{id: response.data.id, sub_id: response.data.sub_id, value: response.data.value, image_id: response.data.image_id, created_at: String(Date())}]))
 		}
     } catch (e) {
-		
+		console.error(e)
     }
 
 }
@@ -64,6 +64,6 @@ export const addFav = (id: string, inFav: number | null) => async (dispatch: Dis
 		}
 		
     } catch (e) {
-		console.log(e)
+		console.error(e)
     }
 }

@@ -34,7 +34,7 @@ export const initializeBreeds = () => async (dispatch: Dispatch<BreedsAction>) =
 		const responseImages = await api.getBreedsImages(10)
 		dispatch(setImages(responseImages.data))
     } catch (e) {
-
+		console.error(e)
     }
 }
 
@@ -43,6 +43,6 @@ export const onSelectLimit = (limit: number) => async (dispatch: Dispatch<Breeds
         const responseImages = await api.getBreedsImages(limit)
 		dispatch(setImages(responseImages.data))
     } catch (e) {
-
+		console.error(e) 
     }
 }

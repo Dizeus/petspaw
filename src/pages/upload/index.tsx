@@ -53,7 +53,6 @@ const Index = () => {
     function dropHandler(event: any) {
 		event.preventDefault();
 		event.stopPropagation();
-		console.log(event.target.files);
 		const file = event.dataTransfer?.files[0] || event.target.files;
 			if(file !== undefined){
 				setPreviewUrl(URL.createObjectURL(file));
