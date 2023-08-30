@@ -166,5 +166,5 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({children, activeItem, bree
         </div>
       </main>
     )
-};
-export default withLoading(ContentLayout);
+}
+export default withLoading(ContentLayout)

@@ -7,7 +7,7 @@ import { api } from "@/api/api";
 import { HistoryItem } from "@/types/HistoryItem";
 
 const Index = ({ history }: { history: HistoryItem[] }) => {
-  const likes: HistoryItem[] = history.filter((x) => x.value === 1);
+  const likes: HistoryItem[] = history.filter((x) => x.value === 1)
   return (
     <MainLayout activeItem="none">
       <ContentLayout activeItem="likes">
@@ -16,8 +16,8 @@ const Index = ({ history }: { history: HistoryItem[] }) => {
         </div>
       </ContentLayout>
     </MainLayout>
-  );
-};
+  )
+}
 
 Index.getInitialProps = async (ctx: NextPageContext) => {
 	try{

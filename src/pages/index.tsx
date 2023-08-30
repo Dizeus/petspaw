@@ -7,8 +7,8 @@ const Index = () => {
         <MainLayout>
 			<Home/>
 		</MainLayout>
-    );
-};
+    )
+}
 
-export default withLoading(Index);
+export default withLoading(Index)
 

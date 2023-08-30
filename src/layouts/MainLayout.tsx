@@ -1,19 +1,19 @@
 import styles from '../styles/MainLayout.module.scss'
-import {NavItem} from "@/components/NavItem";
+import {NavItem} from "@/components/NavItem"
 import voting from "../assets/images/vote-table.png"
 import breeds from "../assets/images/pet-breeds.png"
 import gallery from "../assets/images/images-search.png"
-import Head from 'next/head';
-import ThemeSwitch from '@/components/ThemeSwitch';
-import { cloneElement, isValidElement, Children, useState} from 'react';
-import { useRouter } from 'next/router';
+import Head from 'next/head'
+import ThemeSwitch from '@/components/ThemeSwitch'
+import { cloneElement, isValidElement, Children, useState} from 'react'
+import { useRouter } from 'next/router'
 interface MainLayoutProps {
 	activeItem?: string,
 	children: any
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
-	const [burgerActive, setburgerActive] = useState(false);
+	const [burgerActive, setburgerActive] = useState(false)
 	const router = useRouter()
     return (
       <>
@@ -162,17 +162,17 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
               </div>
             </div>
             {Children.map(children, (child: React.ReactNode) => {
-              if (!isValidElement(child)) return null;
+              if (!isValidElement(child)) return null
               return cloneElement(child, {
                 ...(child ? child.props : {}),
                 setburgerActive: setburgerActive,
                 burgerActive: burgerActive,
-              });
+              })
             })}
           </div>
         </div>
       </>
-    );
-};
+    )
+}
 
-export default MainLayout;
+export default MainLayout

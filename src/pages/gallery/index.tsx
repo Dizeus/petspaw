@@ -189,8 +189,8 @@ const Index = () => {
         </div>
       </ContentLayout>
     </MainLayout>
-  );
-};
+  )
+}
 
 
 export const getServerSideProps = wrapper.getServerSideProps(

@@ -11,9 +11,9 @@ const withLoading = <P extends object>(Component: React.ComponentType<P>):
     });
     Router.events.on("routeChangeComplete", () => {
       setIsChanging(false);
-    });
+    })
 	return  <Loader isFetching={isChanging} width={250} height={400}>
-          <Component {...props as P} />;
+          <Component {...props as P} />
         </Loader>
 }
 
