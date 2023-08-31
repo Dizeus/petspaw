@@ -30,6 +30,7 @@
 	- api: Contains all API request functions
 	- assets: Houses images and icons
 	- components: Includes various project components
+	- HOC: High Order Components (withLoading.tsx) 
 	- hooks: Provides custom hooks
 	- layouts: Offers custom layouts that are reused throughout the project
 	- pages: Contains routing pages
