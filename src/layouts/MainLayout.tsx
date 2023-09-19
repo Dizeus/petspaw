@@ -134,7 +134,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, activeItem}) => {
                 <div className={styles.menu__greeting}>
                   <div className={styles.menu__greetingTitle}>Hi!👋</div>
                   <div className={styles.menu__greetingSubtitle}>
-                    Welcome to MacPaw Bootcamp 2023
+                    Welcome to PetsPaw
                   </div>
                 </div>
                 <div className={styles.menu__navbar}>
