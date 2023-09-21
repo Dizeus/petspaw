@@ -1,5 +1,5 @@
 # petspaw
-## Test task for MacPaw Bootcamp - Next.js React Typescript application with [thecatapi.com](https://thecatapi.com/) API
+## Next.js React Typescript application with [thecatapi.com](https://thecatapi.com/) API
 
 * ### Functionality
 	- Voting for cat images:
